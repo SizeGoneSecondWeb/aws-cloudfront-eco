@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![HOME PAGE][product-screenshot]]([http://ecommercepicturespage.herokuapp.com/](https://previews.dropbox.com/p/thumb/ABs16yntLtpOoKeMec_D_BnQNeInoLcokfI_S57TJAZqAaTZZnCMOU-tz1mEaUEFvsviUHp1j_bR8NooSKnL0lCCAwrzLLwE1DlMn3t_gA_s6tCtAJMaQS0PLNXIp2s6ozMBcW8fYYkBz9Ce-StNJpTsgYa-qJBl97lH6qdV7gdqYKGb_yNNgzfRe0uzS4nzy9vJy6eU6W3QHkB0ucPrM4Rs4cjiSFUyX9sXnQnmD_DvhdbYnH04CRquWqann9SCg4KX3ZbJQGwBj7LFFs03PbhVtuoRkMN9GN7Gt8JudaZSg0Z8OhDUq0Pu5QmdkQb7lLj8_jZTQTLFSVqTe-8N_F_sN2L9rMnpqLzv4IcR1DQVIE1PH-WfMkWL4Mlp1il157k/p.png))
+[![HOME PAGE][product-screenshot]]([http://ecommercepicturespage.herokuapp.com/](https://www.dropbox.com/s/gwgq1od1ynqgx3t/Screenshot%202022-10-21%20230905.png?dl=0)
 ### Thành viên nhóm
 | Họ và tên     | Mã số sinh viên |
 | :---          |     :---:       |
