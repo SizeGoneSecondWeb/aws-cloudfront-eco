@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://ecommercepicturespage.herokuapp.com/)
+[![HOME PAGE][product-screenshot]](http://ecommercepicturespage.herokuapp.com/)
 ### Thành viên nhóm
 | Họ và tên     | Mã số sinh viên |
 | :---          |     :---:       |
