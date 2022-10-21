@@ -23,7 +23,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](http://ecommercepicturespage.herokuapp.com/)
-
+### Thành viên nhóm
 | Họ và tên     | Mã số sinh viên |
 | :---          |     :---:       |
 | Mai Bảo Long  | 20110517        |
@@ -89,4 +89,3 @@ Our Leader - [@leader_facebook](https://www.facebook.com/quanglam0913)
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-1
