@@ -71,7 +71,7 @@
 
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item active"><a class="nav-link"
+			<li class="nav-item"><a class="nav-link"
 				href="list_users"> <i class="fas fa-fw fa-table"></i> <span>User Tables</span></a>
 			</li>
 			
@@ -79,7 +79,7 @@
 			<hr class="sidebar-divider d-none d-md-block">
 			
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item active"><a class="nav-link"
 				href="list_users"> <i class="fas fa-fw fa-table"></i> <span>Product Tables</span></a>
 			</li>
 

@@ -54,30 +54,34 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+			<hr class="sidebar-divider my-0">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Extension
-            </div>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link" href="index.jsp"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="list_users">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-            
-            <!-- Divider -->
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">Extension</div>
+
+
+			<!-- Nav Item - Tables -->
+			<li class="nav-item "><a class="nav-link"
+				href="list_users"> <i class="fas fa-fw fa-table"></i> <span>User Tables</span></a>
+			</li>
+			
+			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			
 			<!-- Nav Item - Tables -->
-			<li class="nav-item active"><a class="nav-link"
-				href="list_users"> <i class="fas fa-fw fa-table"></i> <span>Product Tables</span></a>
+			<li class="nav-item"><a class="nav-link"
+				href="producttables.jsp"> <i class="fas fa-fw fa-table"></i> <span>User Form</span></a>
 			</li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
 
         </ul>
         <!-- End of Sidebar -->
