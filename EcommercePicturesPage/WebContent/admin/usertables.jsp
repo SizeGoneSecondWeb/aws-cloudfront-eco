@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -14,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Admin - Tables</title>
+<title>Manager Users - Tables</title>
 
 <!-- Custom fonts for this template -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -96,7 +97,7 @@
 
 			<!-- Nav Item - Tables -->
 			<li class="nav-item"><a class="nav-link"
-				href="producttables.jsp"> <i class="fas fa-fw fa-table"></i> <span>Product</span></a>
+				href="list_category"> <i class="fas fa-fw fa-table"></i> <span>Category</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -210,7 +211,7 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">UsersDataTables</h6>
+							<h6 class="m-0 font-weight-bold text-primary">UsersDataTable</h6>
 							<br />
 							<div class="col-sm-6">
 								<a href="#addEmployeeModal" class="btn btn-success"
@@ -255,10 +256,14 @@
 													<td>${user.fullName}</td>
 													<td>${user.password}</td>
 													<td align="center"><a href="#editEmployeeModal"
-														class="btn btn-success" data-toggle="modal"> <i
-															class="material-icons">&#xE147;</i> <span>Edit</span></a>
-														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-														href="#deleteEmployeeModal" class="btn btn-danger"
+														onClick="toEditModal('${user.userId}', '${user.fullName}'
+														,'${user.email}','${user.password}')" 
+														class="btn btn-success"
+														data-toggle="modal"><i class="material-icons">&#xE147;</i>
+															<span>Edit</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+															<a href="#deleteEmployeeModal" 
+														onClick="toDeleteModal('${user.userId}')" 
+														class="btn btn-danger"
 														data-toggle="modal"> <i class="material-icons">&#xE15C;</i>
 															<span>Delete</span></a></td>
 												</tr>
@@ -271,18 +276,24 @@
 					</div>
 				</div>
 
-				<!-- Add Modal HTML -->
-				<div id="addEmployeeModal" class="modal fade">
+				<!-- Edit Modal HTML -->
+				<div id="editEmployeeModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<form action="create_user" method="post"
-								onsubmit="return validateFormInput()">
+							<form action="edit_users">
 								<div class="modal-header">
-									<h4 class="modal-title">Add Employee</h4>
+									<h4 class="modal-title">Edit Employee</h4>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">&times;</button>
 								</div>
 								<div class="modal-body">
+									<div class="form-group">
+										<label>ID</label> 
+										<input disabled type="text" id="viewid" name="viewid"
+											class="form-control" required>
+										<input type="hidden" id="id" name="id"
+											class="form-control" required>
+									</div>
 									<div class="form-group">
 										<label>Name</label> <input type="text" id="fullname"
 											name="fullname" class="form-control" required>
@@ -299,44 +310,6 @@
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default"
 										data-dismiss="modal" value="Cancel"> <input
-										type="submit" class="btn btn-success" value="Add"
-										onClick="javascrip:history.go(0)">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!-- Edit Modal HTML -->
-				<div id="editEmployeeModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<form>
-								<div class="modal-header">
-									<h4 class="modal-title">Edit Employee</h4>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">&times;</button>
-								</div>
-								<div class="modal-body">
-									<div class="form-group">
-										<label>Name</label> <input type="text" class="form-control"
-											required>
-									</div>
-									<div class="form-group">
-										<label>Email</label> <input type="email" class="form-control"
-											required>
-									</div>
-									<div class="form-group">
-										<label>Address</label>
-										<textarea class="form-control" required></textarea>
-									</div>
-									<div class="form-group">
-										<label>Phone</label> <input type="text" class="form-control"
-											required>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<input type="button" class="btn btn-default"
-										data-dismiss="modal" value="Cancel"> <input
 										type="submit" class="btn btn-info" value="Save">
 								</div>
 							</form>
@@ -347,13 +320,20 @@
 				<div id="deleteEmployeeModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<form>
+							<form action="delete_user">
 								<div class="modal-header">
 									<h4 class="modal-title">Delete Employee</h4>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">&times;</button>
 								</div>
 								<div class="modal-body">
+									<div class="form-group">
+										<label>ID</label> 
+										<input disabled type="text" id="viewidd" name="viewidd"
+											class="form-control" required>
+										<input type="hidden" id="idd" name="idd"
+											class="form-control" required>
+									</div>
 									<p>Are you sure you want to delete these Records?</p>
 									<p class="text-warning">
 										<small>This action cannot be undone.</small>
@@ -363,6 +343,41 @@
 									<input type="button" class="btn btn-default"
 										data-dismiss="modal" value="Cancel"> <input
 										type="submit" class="btn btn-danger" value="Delete">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Add Modal HTML -->
+				<div id="addEmployeeModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form action="create_user" method="post"
+								>
+								<div class="modal-header">
+									<h4 class="modal-title">Add Employee</h4>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-group">
+										<label>Name</label> <input type="text" id="fullnamee"
+											name="fullnamee" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label>Email</label> <input type="email" id="emaill"
+											name="emaill" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label>Password</label> <input type="password" id="passwordd"
+											name="passwordd" class="form-control" required>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<input type="button" class="btn btn-default"
+										data-dismiss="modal" value="Cancel"> <input
+										type="submit" class="btn btn-success" value="Add">
 								</div>
 							</form>
 						</div>
@@ -425,29 +440,8 @@
 
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
+	<script src="js/userstable.js"></script>
+
 
 </body>
-<script type="text/javascript">
-	function validateFormInput() {
-		var fieldEmail = document.getElementById("email");
-		var fieldFullname = document.getElementById("fullname");
-		var fieldEPassword = document.getElementById("password");
-		if (fieldEmail.value.length == 0) {
-			alert("Email is required!");
-			fieldEmail.focus();
-			return false;
-		}
-		if (fieldFullname.value.length == 0) {
-			alert("User is required!");
-			fieldEmail.focus();
-			return false;
-		}
-		if (fieldPassword.value.length <= 6) {
-			alert("Password must be more than 5 characters!");
-			fieldEmail.focus();
-			return false;
-		}
-		return true;
-	}
-</script>
 </html>

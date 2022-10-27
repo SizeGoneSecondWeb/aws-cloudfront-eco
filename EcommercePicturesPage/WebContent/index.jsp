@@ -28,19 +28,24 @@
 					<div class="navbar-nav w-100">
 						<div class="nav-item dropdown dropright">
 							<a href="#" class="nav-link dropdown-toggle"
-								data-toggle="dropdown">Dresses <i
+								data-toggle="dropdown">Hot <i
 								class="fa fa-angle-right float-right mt-1"></i></a>
+								<div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+									<c:forEach var="c" items="${categories}">
+										<a href="" class="dropdown-item">${c.name}</a> 
+									</c:forEach>
+								</div>
 							<div
 								class="dropdown-menu position-absolute rounded-0 border-0 m-0">
 								<a href="" class="dropdown-item">Men's Dresses</a> <a href=""
 									class="dropdown-item">Women's Dresses</a> <a href=""
 									class="dropdown-item">Baby's Dresses</a>
 							</div>
+							
 						</div>
-						<c:forEach items="${listC}" var="o">
-							<a href="" class="nav-item nav-link">${o.cname}</a> 
+						<c:forEach var="c" items="${categories}">
+								<a href="" class="nav-item nav-link">${c.name}</a> 
 						</c:forEach>
-						
 					</div>
 				</nav>
 			</div>

@@ -17,15 +17,13 @@ import org.junit.Test;
 
 import com.ecopic.entity.Users;
 
-public class UserDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class UserDAOTest extends BaseDAOTest {
+	
 	private static UserDAO userDAO;
 	
 	@BeforeClass
-	public static void setUpClass() {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("PictureStoreWebsite");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+	public static void setUpClass() throws Exception {
+		BaseDAOTest.setUpBeforeClass();
 		
 		userDAO = new UserDAO(entityManager);
 	}
@@ -33,8 +31,8 @@ public class UserDAOTest {
 	@Test
 	public void testCreateUsers() {
 		Users user1 = new Users();
-		user1.setEmail("bicdreamer@gmail.com");
-		user1.setFullName("Lin Lin");
+		user1.setEmail("bicdreamer2@gmail.com");
+		user1.setFullName("Lin Lin ne");
 		user1.setPassword("011102");
 		
 		user1= userDAO.create(user1);
@@ -112,8 +110,7 @@ public class UserDAOTest {
 	}
 	
 	@AfterClass
-	public static void tearDownClass() {
-		entityManager.close();
-		entityManagerFactory.close();
+	public static void tearDownAfterClass() throws Exception {
+		BaseDAOTest.tearDownAfterClass();
 	}
 }

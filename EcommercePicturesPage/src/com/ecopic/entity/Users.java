@@ -17,8 +17,15 @@ import javax.persistence.NamedQuery;
 public class Users {
 	private Integer userId;
 	private String email;
+	private String fullName;
+	private String password;
 	
 	public Users() {
+	}
+	
+	public Users(Integer id, String email, String fullName, String password) {
+		this(email, fullName, password);
+		this.userId = id;
 	}
 	
 	public Users(String email, String fullName, String password) {
@@ -28,8 +35,7 @@ public class Users {
 		this.password = password;
 	}
 
-	private String fullName;
-	private String password;
+	
 
 	@Column(name="user_id")
 	@Id
