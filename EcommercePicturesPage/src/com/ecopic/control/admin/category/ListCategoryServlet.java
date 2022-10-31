@@ -23,7 +23,6 @@ public class ListCategoryServlet extends BaseServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		response.getWriter().println("List Category");
 		CategoryServices categoryServices = new CategoryServices(entityManager,request,response);
 		categoryServices.listCategory();
 	}

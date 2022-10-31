@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import com.ecopic.entity.Category;
 
-import net.bytebuddy.implementation.bind.annotation.Super;
 
 public class CategoryDAOTest extends BaseDAOTest {
 
@@ -79,7 +78,7 @@ public class CategoryDAOTest extends BaseDAOTest {
 	public void testCount() {
 		long totalCat = categoryDAO.count();
 		
-		assertEquals(2,totalCat);
+		assertEquals(4,totalCat);
 	}
 	
 	@Test

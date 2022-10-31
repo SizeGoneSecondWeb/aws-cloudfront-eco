@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import com.ecopic.entity.Picture;
+import com.oracle.wls.shaded.org.apache.bcel.generic.RETURN;
 
 public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 
@@ -22,32 +23,37 @@ public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 
 	@Override
 	public Picture update(Picture t) {
-		// TODO Auto-generated method stub
-		return null;
+		t.setLastUpdateTime(new Date());
+		return super.update(t);
 	}
 
 	@Override
 	public Picture get(Object id) {
-		// TODO Auto-generated method stub
-		return null;
+		return super.find(Picture.class, id);
 	}
 
 	@Override
 	public void delete(Object id) {
-		// TODO Auto-generated method stub
-		
+		super.delete(Picture.class	, id);
 	}
 
 	@Override
 	public List<Picture> listAll() {
-		// TODO Auto-generated method stub
+		return super.findWithNamedQuery("Picture.findAll");
+	}
+	
+	public Picture findByTitle(String title) {
+		List<Picture> result = super.findWithNamedQuery("Picture.findByTitle","title",title);
+		
+		if( !result.isEmpty()) {
+			return result.get(0);
+		}
 		return null;
 	}
-
+	
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countWithNamedQuery("Picture.countAll");
 	}
 
 }
