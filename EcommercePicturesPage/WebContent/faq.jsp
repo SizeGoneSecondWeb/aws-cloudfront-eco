@@ -136,6 +136,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="Footer.html" />
+	<jsp:include page="Footer.jsp" />
 	<script language="javascript" src="js/faqscript.js"></script>
 </html>

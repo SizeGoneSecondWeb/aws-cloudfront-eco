@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -37,14 +38,14 @@
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <!-- css of datepicker -->
 <link rel="stylesheet" href="css/jquery-ui.min.css">
-<!-- <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
-<!-- <link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- editer text -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<!-- script hỗ trợ phân trang -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/richtext.min.css">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.richtext.min.js"></script>
 
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -66,12 +67,12 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="${pageContext.request.contextPath}/admin/">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
 				<div class="sidebar-brand-text mx-3">
-					SB Admin <sup>2</sup>
+					SB Admin <sup>super</sup>
 				</div>
 			</a>
 
@@ -189,14 +190,13 @@
 													<td>${pic.title}</td>
 													<td>${pic.author}</td>
 													<td>${pic.category.name}</td>
-													<td>${pic.price}</td>
-													<td>${pic.lastUpdateTime}</td>
-													<td align="center"><a href="#editPictureModal"
-														onClick="toEditModal('${cat.categoryId}','${cat.name}')"
-														class="btn btn-success" data-toggle="modal"><i
+													<td>$${pic.price}</td>
+													<td><fmt:formatDate pattern=' hh:mm:ss - MM/dd/yyyy' value='${pic.lastUpdateTime}'/></td>
+													<td align="center"><a href="edit_picture?id=${pic.pictureId}"
+														class="btn btn-success"><i
 															class="material-icons">&#xE147;</i> <span>Edit</span></a><br />
-														<br /> <a href="#deleteCategoryModal"
-														onClick="toPictureModal('${cat.categoryId}')"
+														<br /> <a href="#deletePictureModal"
+														onClick="toDeleteModal('${pic.pictureId}')"
 														class="btn btn-danger" data-toggle="modal"> <i
 															class="material-icons">&#xE15C;</i> <span>Delete</span></a></td>
 												</tr>
@@ -209,36 +209,6 @@
 					</div>
 				</div>
 
-				<!-- Edit Modal HTML -->
-				<div id="editPictureModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<form action="edit_picture">
-								<div class="modal-header">
-									<h4 class="modal-title">Edit Picture</h4>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">&times;</button>
-								</div>
-								<div class="modal-body">
-									<div class="form-group">
-										<label>ID</label> <input disabled type="text" id="viewid"
-											name="viewid" class="form-control" required> <input
-											type="hidden" id="id" name="id" class="form-control" required>
-									</div>
-									<div class="form-group">
-										<label>Name</label> <input type="text" id="name" name="name"
-											class="form-control" required>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<input type="button" class="btn btn-default"
-										data-dismiss="modal" value="Cancel"> <input
-										type="submit" class="btn btn-info" value="Save">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 				<!-- Delete Modal HTML -->
 				<div id="deletePictureModal" class="modal fade">
 					<div class="modal-dialog">
@@ -315,6 +285,11 @@
 										<label>Description</label> <textarea rows="7" id="description"
 											name="description" class="form-control" required></textarea>
 									</div>
+									<script>
+											$(document).ready(function() {
+												$('#description').richText();
+											});
+										</script>
 								</div>
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default"
@@ -338,17 +313,9 @@
 	</div>
 	<!-- End of Page Wrapper -->
 
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i>
-	</a>
-
 	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
@@ -360,31 +327,10 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
 
-	<script src="js/picture_table.js"></script>
+	<script src="js/picture-table.js"></script>
 	
 	<!-- datepicker -->
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	
 </body>
-  <script type="text/javascript">
-  $(document).ready(function() {
-    $( "#publishDate" ).datepicker();
-    
-    $("#image").change(function(){
-    	showImageThumbnail(this);
-    });
-  } );
-  
-  function showImageThumbnail(fileInput){
-	  var file = fileInput.files[0];
-	  
-	  var reader = new FileReader();
-	  
-	  reader.onload = function(e){
-		  $('#thumbnail').attr('src',e.target.result)
-	  };
-	  
-	  reader.readAsDataURL(file);
-  }
-  </script>
 </html>

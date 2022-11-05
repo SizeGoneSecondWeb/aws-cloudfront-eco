@@ -5,7 +5,7 @@
 <html lang="vi">
 
 <head>
-<jsp:include page="Header.html" />
+<jsp:include page="Header.jsp" />
 </head>
 
 <body>
@@ -30,21 +30,15 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-toggle="dropdown">Hot <i
 								class="fa fa-angle-right float-right mt-1"></i></a>
-								<div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-									<c:forEach var="c" items="${categories}">
-										<a href="" class="dropdown-item">${c.name}</a> 
-									</c:forEach>
-								</div>
 							<div
 								class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-								<a href="" class="dropdown-item">Men's Dresses</a> <a href=""
-									class="dropdown-item">Women's Dresses</a> <a href=""
-									class="dropdown-item">Baby's Dresses</a>
+								<c:forEach var="c" items="${listCategory}">
+									<a href="view_category?id=${c.categoryId}" class="dropdown-item">${c.name}</a>
+								</c:forEach>
 							</div>
-							
 						</div>
-						<c:forEach var="c" items="${categories}">
-								<a href="" class="nav-item nav-link">${c.name}</a> 
+						<c:forEach var="c" items="${listCategory}">
+							<a href="view_category?id=${c.categoryId}" class="nav-item nav-link">${c.name}</a>
 						</c:forEach>
 					</div>
 				</nav>
@@ -63,9 +57,9 @@
 					<div class="collapse navbar-collapse justify-content-between"
 						id="navbarCollapse">
 						<div class="navbar-nav mr-auto py-0">
-							<a href="home" class="nav-item nav-link active" id="home">Home</a> <a
-								href="shop.jsp" class="nav-item nav-link" id="shop">Shop</a> <a
-								href="detail.jsp" class="nav-item nav-link" id="shop_detail">Shop
+							<a href="home" class="nav-item nav-link active" id="home">Home</a>
+							<a href="view_category" class="nav-item nav-link" id="shop">Shop</a> <a
+								href="view_picture?id=2" class="nav-item nav-link" id="shop_detail">Shop
 								Detail</a>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle"
@@ -251,16 +245,16 @@
 			<span class="bg-secondary pr-3">Categories</span>
 		</h2>
 		<div class="row px-xl-5 pb-3">
-			<c:forEach items="${sessionScope.listC}" var="o"> 
+			<c:forEach items="${categories}" var="cat">
 				<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-					<a class="text-decoration-none" href="">
+					<a class="text-decoration-none" href="view_category?id=${cat.categoryId}">
 						<div class="cat-item img-zoom d-flex align-items-center mb-4">
 							<div class="overflow-hidden" style="width: 100px; height: 100px;">
 								<img class="img-fluid" src="img/cat-2.jpg" alt="">
 							</div>
 							<div class="flex-fill pl-3">
-								<h6>${o.cname}</h6>
-								<small class="text-body">100 Products</small>
+								<h6>${cat.name}</h6>
+								<small class="text-body">?? Products</small>
 							</div>
 						</div>
 					</a>
@@ -291,7 +285,7 @@
 									class="btn btn-outline-dark btn-square" href=""><i
 									class="fa fa-sync-alt"></i></a> <a
 									class="btn btn-outline-dark btn-square" href=""><i
-									class="fa fa-search"></i></a> 
+									class="fa fa-search"></i></a>
 							</div>
 						</div>
 						<div class="text-center py-4">
@@ -355,11 +349,11 @@
 			<span class="bg-secondary pr-3">Recent Products</span>
 		</h2>
 		<div class="row px-xl-5">
-			<c:forEach items="${sessionScope.listN}" var="o">
+			<c:forEach items="${listNewPictures}" var="newpic">
 				<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
 					<div class="product-item bg-light mb-4">
 						<div class="product-img position-relative overflow-hidden">
-							<img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+							<img class="img-fluid w-100" src="data:image/jpg;base64,${newpic.base64Image}" alt="">
 							<div class="product-action">
 								<a class="btn btn-outline-dark btn-square" href=""><i
 									class="fa fa-shopping-cart"></i></a> <a
@@ -372,14 +366,17 @@
 							</div>
 						</div>
 						<div class="text-center py-4">
-							<a class="h6 text-decoration-none text-truncate" href="">${o.name}</a>
-							<div class="d-flex align-items-center justify-content-center mt-2">
-								<h5>${o.price}</h5>
+							<a class="h6 text-decoration-none text-truncate" 
+								href="view_picture?id=${newpic.pictureId}">${newpic.title}</a>
+							<div
+								class="d-flex align-items-center justify-content-center mt-2">
+								<h5>$${newpic.price}</h5>
 								<h6 class="text-muted ml-2">
-									<del>$1230.00</del>
+									<del>$${newpic.price +10}</del>
 								</h6>
 							</div>
-							<div class="d-flex align-items-center justify-content-center mb-1">
+							<div
+								class="d-flex align-items-center justify-content-center mb-1">
 								<small class="fa fa-star text-primary mr-1"></small> <small
 									class="fa fa-star text-primary mr-1"></small> <small
 									class="fa fa-star text-primary mr-1"></small> <small
@@ -432,7 +429,7 @@
 
 
 	<!-- Footer Start -->
-	<jsp:include page="Footer.html" />
+	<jsp:include page="Footer.jsp" />
 	<!-- Footer End -->
 
 	<!-- Back to Top -->

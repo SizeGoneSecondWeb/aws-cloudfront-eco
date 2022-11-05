@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-   <jsp:include page="Header.html" />
+   <jsp:include page="Header.jsp" />
 </head>
 
 <body>
@@ -63,8 +63,8 @@
 						id="navbarCollapse" action="Header.html">
 						<div class="navbar-nav mr-auto py-0">
 							<a href="home" class="nav-item nav-link" id="home">Home</a> <a
-								href="shop.jsp" class="nav-item nav-link" id="shop">Shop</a> <a
-								href="detail.jsp" class="nav-item nav-link" id="shop_detail">Shop Detail</a>
+								href="view_category" class="nav-item nav-link" id="shop">Shop</a> <a
+								href="view_picture?id=2" class="nav-item nav-link" id="shop_detail">Shop Detail</a>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle active"
 									data-toggle="dropdown" id="page">Pages <i
@@ -100,7 +100,7 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="home">Home</a>
-                    <a class="breadcrumb-item text-dark" href="shop.jsp">Shop</a>
+                    <a class="breadcrumb-item text-dark" href="view_category">Shop</a>
                     <span class="breadcrumb-item active">Checkout</span>
                 </nav>
             </div>
@@ -294,7 +294,7 @@
 
 
     <!-- Footer Start -->
-    <jsp:include page="Footer.html" />
+    <jsp:include page="Footer.jsp" />
     <!-- Footer End -->
 
 

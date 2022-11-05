@@ -185,7 +185,7 @@
 	</div>
 	
 	<!-- Footer Start -->
-	<jsp:include page="Footer.html" />
+	<jsp:include page="Footer.jsp" />
 	<!-- Footer End -->
 </body>
 </html>

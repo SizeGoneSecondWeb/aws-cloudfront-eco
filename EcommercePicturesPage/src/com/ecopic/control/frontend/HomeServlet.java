@@ -6,15 +6,15 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ecopic.control.BaseServlet;
-import com.ecopic.dao.CategoryDAO;
-import com.ecopic.entity.Category;
+import com.ecopic.dao.PictureDAO;
+import com.ecopic.entity.Picture;
 
 @WebServlet("/home")
-public class HomeServlet extends BaseServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public HomeServlet() {
@@ -22,9 +22,15 @@ public class HomeServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryDAO categoryDAO = new CategoryDAO(entityManager);
-		List<Category> categories = categoryDAO.listAll();
-		request.setAttribute("categories", categories);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		PictureDAO pictureDAO = new PictureDAO();
+		
+		List<Picture> listNewPictures = pictureDAO.listNewPictures();
+		
+		request.setAttribute("listNewPictures", listNewPictures);
 		String homepage ="index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
 		dispatcher.forward(request, response);

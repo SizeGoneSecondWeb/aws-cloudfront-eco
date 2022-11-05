@@ -4,14 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-
 import com.ecopic.entity.Users;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
-	public UserDAO(EntityManager entityManager) {
-		super(entityManager);
+	public UserDAO() {
 	}
 
 	@Override

@@ -2,16 +2,11 @@ package com.ecopic.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import com.ecopic.entity.Category;
-import com.ecopic.entity.Users;
 
 public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category> {
 
-	public CategoryDAO(EntityManager entityManager) {
-		super(entityManager);
-		// TODO Auto-generated constructor stub
+	public CategoryDAO() {
 	}
 
 	@Override

@@ -12,23 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ecopic.dao.CategoryDAO;
+import com.ecopic.dao.PictureDAO;
 import com.ecopic.entity.Category;
 import com.ecopic.entity.Users;
 
 
 public class CategoryServices {
-	private EntityManager entityManager;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private CategoryDAO categoryDAO;
 	
-	public CategoryServices(EntityManager entityManager, 
-			HttpServletRequest request, HttpServletResponse response) {
+	public CategoryServices(HttpServletRequest request, HttpServletResponse response) {
 		super();
 		this.request = request;
 		this.response = response;
-		this.entityManager = entityManager;
-		categoryDAO = new CategoryDAO(entityManager);
+		categoryDAO = new CategoryDAO();
 	}
 	
 	public void listCategory() throws ServletException, IOException {
@@ -88,10 +86,18 @@ public class CategoryServices {
 
 	public void deleteCategory() throws ServletException, IOException {
 		int catID = Integer.parseInt(request.getParameter("idd")) ;
+		PictureDAO pictureDAO = new PictureDAO();
+		long numOfPicture = pictureDAO.countByCategory(catID);
+		String message;
+		if(numOfPicture > 0) {
+			message = "Could not delete the category (ID: %d) because it currently contains some picture!";
+			message = String.format(message, catID);
+		}else {
+			categoryDAO.delete(catID);
 		
-		categoryDAO.delete(catID);
+			message = "Category has been delete successfully!";
+		}
 		
-		String message = "Category has been delete successfully!";
 		listCategory(message);
 	}
 	

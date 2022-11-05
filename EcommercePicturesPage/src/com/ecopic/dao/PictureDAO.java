@@ -3,16 +3,11 @@ package com.ecopic.dao;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import com.ecopic.entity.Picture;
-import com.oracle.wls.shaded.org.apache.bcel.generic.RETURN;
 
 public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 
-	public PictureDAO(EntityManager entityManager) {
-		super(entityManager);
-		// TODO Auto-generated constructor stub
+	public PictureDAO() {
 	}
 
 	@Override
@@ -51,9 +46,25 @@ public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 		return null;
 	}
 	
+	public List<Picture> listByCategory(int categoryId){
+		
+		return super.findWithNamedQuery("Picture.findByCategory","catId",categoryId);
+	}
+	
+	public List<Picture> search(String keyword){
+		return super.findWithNamedQuery("Picture.search","keyword",keyword);
+	}
+	
+	public List<Picture> listNewPictures(){
+		return super.findWithNamedQuery("Picture.listNew", 0, 4);
+	}
+	
 	@Override
 	public long count() {
 		return super.countWithNamedQuery("Picture.countAll");
 	}
-
+	
+	public long countByCategory(int categoryId) {
+		return super.countWithNamedQuery("Picture.countByCategory","catId",categoryId);
+	}
 }

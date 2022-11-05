@@ -19,19 +19,17 @@ import org.junit.Test;
 
 import com.ecopic.entity.Picture;
 import com.ecopic.entity.Category;
-import com.oracle.wls.shaded.org.apache.xml.utils.URI;
 
-public class PictureDAOTest extends BaseDAOTest	{
+public class PictureDAOTest{
 	private static PictureDAO pictureDAO;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		 BaseDAOTest.setUpBeforeClass();
-		 pictureDAO = new PictureDAO(entityManager);
+		 pictureDAO = new PictureDAO();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDAOTest.tearDownAfterClass();
+		pictureDAO.close();
 	}
 
 	@Test
@@ -103,6 +101,13 @@ public class PictureDAOTest extends BaseDAOTest	{
 	}
 	
 	@Test
+	public void testNewBooks() {
+		List<Picture> listNewPictures = pictureDAO.listNewPictures();
+		
+		assertEquals(4, listNewPictures.size());
+	}
+	
+	@Test
 	public void testGetPicture() {
 		Integer pictureId = 2;
 		Picture picture = pictureDAO.get(pictureId);
@@ -122,6 +127,30 @@ public class PictureDAOTest extends BaseDAOTest	{
 	}
 	
 	@Test
+	public void testSearchPictureInTitle() {
+		String keyword="Tôi";
+		List<Picture> search = pictureDAO.search(keyword);
+		
+		assertEquals(4, search.size());
+	}
+	
+	@Test
+	public void testSearchPictureInAuthor() {
+		String keyword="shulminc";
+		List<Picture> search = pictureDAO.search(keyword);
+		
+		assertEquals(3, search.size());
+	}
+	
+	@Test
+	public void testSearchPictureInDescription() {
+		String keyword="hehe";
+		List<Picture> search = pictureDAO.search(keyword);
+		
+		assertEquals(1, search.size());
+	}
+	
+	@Test
 	public void testFindByTitle() {
 		String titleString ="Hoàng hôn bên bờ sông hàn";
 		Picture picture = pictureDAO.findByTitle(titleString);
@@ -133,9 +162,25 @@ public class PictureDAOTest extends BaseDAOTest	{
 	}
 	
 	@Test
+	public void testListByCategory() {
+		int categoryId =6;
+		List<Picture> pictures = pictureDAO.listByCategory(categoryId);
+		
+		assertTrue(pictures.size()>0);
+	}
+	
+	@Test
 	public void testCount() {
 		long totalPic = pictureDAO.count();
 		
 		assertEquals(1, totalPic);
+	}
+	
+	@Test
+	public void testCountByCategory() {
+		int categoryId = 6;
+		long numOfPicture = pictureDAO.countByCategory(categoryId);
+		
+		assertTrue(numOfPicture == 7);
 	}
 }
