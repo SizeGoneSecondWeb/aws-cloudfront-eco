@@ -1,13 +1,18 @@
 package com.ecopic.entity;
 // Generated Oct 30, 2022, 1:32:48 PM by Hibernate Tools 5.2.13.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,6 +24,12 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "customer", catalog = "ecopic", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@NamedQueries({
+	@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
+	@NamedQuery(name="Customer.countAll", query="SELECT COUNT(c.email) FROM Customer c"),
+	@NamedQuery(name="Customer.findByEmail", query="SELECT c FROM Customer c WHERE c.email = :email"),
+	@NamedQuery(name="Customer.checkLogin", query="SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password"),
+})
 public class Customer implements java.io.Serializable {
 
 	private int customerId;
@@ -31,7 +42,7 @@ public class Customer implements java.io.Serializable {
 	private String password;
 	private Date registerDate;
 	private Set<Review> reviews = new HashSet<Review>(0);
-	private Set<PictureOder> pictureOders = new HashSet<PictureOder>(0);
+	private Set<PictureOrder> pictureOders = new HashSet<PictureOrder>(0);
 
 	public Customer() {
 	}
@@ -50,7 +61,7 @@ public class Customer implements java.io.Serializable {
 	}
 
 	public Customer(int customerId, String email, String fullname, String address, String city, String country,
-			String phone, String password, Date registerDate, Set<Review> reviews, Set<PictureOder> pictureOders) {
+			String phone, String password, Date registerDate, Set<Review> reviews, Set<PictureOrder> pictureOders) {
 		this.customerId = customerId;
 		this.email = email;
 		this.fullname = fullname;
@@ -65,7 +76,7 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "customer_id", unique = true, nullable = false)
 	public int getCustomerId() {
 		return this.customerId;
@@ -158,11 +169,11 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-	public Set<PictureOder> getPictureOders() {
+	public Set<PictureOrder> getPictureOders() {
 		return this.pictureOders;
 	}
 
-	public void setPictureOders(Set<PictureOder> pictureOders) {
+	public void setPictureOders(Set<PictureOrder> pictureOders) {
 		this.pictureOders = pictureOders;
 	}
 

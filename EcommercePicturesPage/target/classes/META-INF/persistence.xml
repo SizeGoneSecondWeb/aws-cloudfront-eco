@@ -11,6 +11,10 @@
 				value="jdbc:mysql://localhost:3306/ecopic?useSLL=false?autoReconnect=true?serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
+			<!-- <property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_4fa9d8827274d63?useSLL=false?autoReconnect=true?serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.user" value="b241256b5b5237" />
+			<property name="javax.persistence.jdbc.password" value="c665024c" /> -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
@@ -19,7 +23,7 @@
 			<property name="hibernate.c3p0.max_size" value="10"/>
 			<property name="hibernate.c3p0.timeout" value="120"/>
 			<property name="hibernate.c3p0.max_statements" value="50"/>
-			<property name="hibernate.c3p0.idle_test_period" value="100"/>
+			<property name="hibernate.c3p0.idle_test_period" value="3000"/>
 		</properties>
 	</persistence-unit>
 

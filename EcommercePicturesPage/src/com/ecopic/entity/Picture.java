@@ -2,10 +2,12 @@
 // Generated Oct 30, 2022, 1:32:48 PM by Hibernate Tools 5.2.13.Final
 
 import java.util.Base64;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,9 +74,14 @@ public class Picture implements java.io.Serializable {
 	private Date publishDate;
 	private Date lastUpdateTime;
 	private Set<Review> reviews = new HashSet<Review>(0);
-	private Set<OderDetail> oderDetails = new HashSet<OderDetail>(0);
+	private Set<OrderDetail> oderDetails = new HashSet<OrderDetail>(0);
 
 	public Picture() {
+	}
+
+	public Picture(Integer pictureId) {
+		super();
+		this.pictureId = pictureId;
 	}
 
 	public Picture(Category category, String title, String author, String description, byte[] image, float price,
@@ -90,7 +97,7 @@ public class Picture implements java.io.Serializable {
 	}
 
 	public Picture(Category category, String title, String author, String description, byte[] image, float price,
-			Date publishDate, Date lastUpdateTime, Set<Review> reviews, Set<OderDetail> oderDetails) {
+			Date publishDate, Date lastUpdateTime, Set<Review> reviews, Set<OrderDetail> oderDetails) {
 		this.category = category;
 		this.title = title;
 		this.author = author;
@@ -190,9 +197,19 @@ public class Picture implements java.io.Serializable {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "picture")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "picture")
 	public Set<Review> getReviews() {
-		return this.reviews;
+		TreeSet<Review> sortedReviews = new TreeSet<Review>(new Comparator<Review>() {
+
+			@Override
+			public int compare(Review review1, Review review2) {
+				return review2.getReviewTime().compareTo(review1.getReviewTime());
+			}
+			
+		});
+		
+		sortedReviews.addAll(reviews);
+		return sortedReviews;
 	}
 
 	public void setReviews(Set<Review> reviews) {
@@ -200,11 +217,11 @@ public class Picture implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "picture")
-	public Set<OderDetail> getOderDetails() {
+	public Set<OrderDetail> getOderDetails() {
 		return this.oderDetails;
 	}
 
-	public void setOderDetails(Set<OderDetail> oderDetails) {
+	public void setOderDetails(Set<OrderDetail> oderDetails) {
 		this.oderDetails = oderDetails;
 	}
 	
@@ -216,5 +233,53 @@ public class Picture implements java.io.Serializable {
 	@javax.persistence.Transient
 	public void setBase64Image(String base64Image) {
 		this.base64Image = base64Image;
+	}
+	
+	@javax.persistence.Transient
+	public float getAverageRating() {
+		float averageRating = 0.0f;
+		float sum = 0.0f;
+		
+		if(reviews.isEmpty()) {
+			return 0.0f;
+		}
+		
+		for(Review review : reviews) {
+			sum+=review.getRating();
+		}
+		
+		averageRating = sum / reviews.size();
+		
+		return averageRating;
+	}
+	@javax.persistence.Transient
+	public String getRatingStars() {
+		float averageRating = getAverageRating();
+		
+		return getRatingString(averageRating);
+	}
+	
+	@javax.persistence.Transient
+	public String getRatingString(float averageRating) {
+		String result = "";
+		
+		int numberOfStarsOn = (int) averageRating;
+		
+		for(int i = 1; i <= numberOfStarsOn; i++) {
+			result += "on,";
+		}
+		
+		int next = numberOfStarsOn + 1;
+		
+		if(averageRating > numberOfStarsOn) {
+			result +="half,";
+			next++;
+		}
+		
+		for(int j = next; j <= 5; j++) {
+			result += "off,";
+		}
+		
+		return result.substring(0,result.length()-1);
 	}
 }

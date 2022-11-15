@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,23 +54,41 @@ a:hover {
 				<div class="d-inline-flex align-items-center h-100">
 					<a class="text-body mr-3"
 						href="https://homepageapplvl.herokuapp.com/">About</a>
-					<!-- <a class="text-body mr-3" href="contact.html">Contact</a> -->
+					<a class="text-body mr-3" href="${pageContext.request.contextPath}/admin/">Admin Page</a>
 					<a class="text-body mr-3" href="contact.jsp">Help</a> <a
 						class="text-body mr-3" href="faq.jsp">FAQs</a>
 				</div>
 			</div>
 			<div class="col-lg-6 text-center text-lg-right">
 				<div class="d-inline-flex align-items-center">
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-light dropdown-toggle"
-							data-toggle="dropdown">My Account</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<button class="dropdown-item" type="button"
-								onclick="location.href='admin/login.jsp'">Sign in</button>
-							<button class="dropdown-item" type="button"
-								onclick="location.href='admin/register.jsp'">Sign up</button>
+					<c:if test="${loggedCustomer == null }">
+						<div class="btn-group">
+							<button type="button"
+								class="btn btn-sm btn-light dropdown-toggle"
+								data-toggle="dropdown">My Account</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<button class="dropdown-item" type="button"
+									onclick="location.href='login'">Sign in</button>
+								<button class="dropdown-item" type="button"
+									onclick="location.href='register'">Sign up</button>
+							</div>
 						</div>
-					</div>
+					</c:if>
+					<c:if test="${loggedCustomer != null }">
+						<div class="btn-group">
+							<button type="button"
+								class="btn btn-sm btn-light dropdown-toggle"
+								data-toggle="dropdown">Hello ${loggedCustomer.fullname}</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<button class="dropdown-item" type="button"
+									onclick="location.href='view_profile'">My profile</button>
+								<button class="dropdown-item" type="button"
+									onclick="location.href='view_orders'">My orders</button>
+								<button class="dropdown-item" type="button"
+									onclick="location.href='logout'">Sign out</button>
+							</div>
+						</div>
+					</c:if>
 					<!--  <div class="btn-group mx-2">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -103,7 +122,8 @@ a:hover {
 		<div
 			class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
 			<div class="col-lg-4">
-				<a href="${pageContext.request.contextPath}" class="text-decoration-none"> <span
+				<a href="${pageContext.request.contextPath}"
+					class="text-decoration-none"> <span
 					class="h1 text-uppercase text-primary bg-dark px-2">Pictures</span>
 					<span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
 				</a>
@@ -111,11 +131,11 @@ a:hover {
 			<div class="col-lg-4 col-6 text-left">
 				<form action="search_picture" method="get">
 					<div class="input-group">
-						<input type="text" class="form-control"
-							id="keyword" name="keyword"
-							placeholder="Search for products">
+						<input type="text" class="form-control" id="keyword"
+							name="keyword" placeholder="Search for products">
 						<div class="input-group-append">
-							<input type="submit" value="Search" class="input-group-text bg-transparent text-primary">
+							<input type="submit" value="Search"
+								class="input-group-text bg-transparent text-primary">
 						</div>
 					</div>
 				</form>

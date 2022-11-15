@@ -1,15 +1,19 @@
 package com.ecopic.entity;
 // Generated Oct 30, 2022, 1:32:48 PM by Hibernate Tools 5.2.13.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +23,13 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "review", catalog = "ecopic")
+@NamedQueries({
+	@NamedQuery(name ="Review.listAll", query="SELECT r FROM Review r ORDER BY r.reviewTime DESC"),
+	@NamedQuery(name ="Review.countAll", query="SELECT COUNT(r) FROM Review r"),
+	@NamedQuery(name ="Review.findByCustomerAndPicture", query="SELECT r FROM Review r "
+			+ "WHERE r.customer.customerId = :customerId "
+			+ " AND r.picture.pictureId = :pictureId"),
+})
 public class Review implements java.io.Serializable {
 
 	private Integer reviewId;
@@ -53,7 +64,7 @@ public class Review implements java.io.Serializable {
 		this.reviewId = reviewId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", nullable = false)
 	public Customer getCustomer() {
 		return this.customer;
@@ -63,7 +74,7 @@ public class Review implements java.io.Serializable {
 		this.customer = customer;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "picture_id", nullable = false)
 	public Picture getPicture() {
 		return this.picture;
@@ -108,6 +119,25 @@ public class Review implements java.io.Serializable {
 
 	public void setReviewTime(Date reviewTime) {
 		this.reviewTime = reviewTime;
+	}
+	
+	@javax.persistence.Transient
+	public String getStars() {
+		String result = "";
+		
+		int numberOfStarsOn = (int) rating;
+		
+		for(int i = 1; i <= numberOfStarsOn; i++) {
+			result += "on,";
+		}
+		
+		int next = numberOfStarsOn + 1;
+		
+		for(int j = numberOfStarsOn + 1	; j <= 5; j++) {
+			result += "off,";
+		}
+		
+		return result.substring(0,result.length()-1);
 	}
 
 }

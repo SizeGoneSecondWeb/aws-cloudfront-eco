@@ -110,6 +110,30 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_customer"> <i class="fas fa-fw fa-table"></i> <span>Customer
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item "><a class="nav-link"
+				href="list_review"> <i class="fas fa-fw fa-table"></i> <span>Review
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_order"> <i class="fas fa-fw fa-table"></i> <span>Order
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
 
 		</ul>
 		<!-- End of Sidebar -->

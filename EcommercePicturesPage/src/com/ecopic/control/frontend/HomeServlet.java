@@ -29,8 +29,10 @@ public class HomeServlet extends HttpServlet {
 		PictureDAO pictureDAO = new PictureDAO();
 		
 		List<Picture> listNewPictures = pictureDAO.listNewPictures();
+		List<Picture> listPictures = pictureDAO.listAll();
 		
 		request.setAttribute("listNewPictures", listNewPictures);
+		request.setAttribute("listPictures", listPictures);
 		String homepage ="index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
 		dispatcher.forward(request, response);

@@ -114,6 +114,30 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link" href="list_customer">
+					<i class="fas fa-fw fa-table"></i> <span>Customer Tables</span>
+			</a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
+			<!-- Nav Item - Tables -->
+			<li class="nav-item "><a class="nav-link" href="list_review">
+					<i class="fas fa-fw fa-table"></i> <span>Review Tables</span>
+			</a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link" href="list_order">
+					<i class="fas fa-fw fa-table"></i> <span>Order Tables</span>
+			</a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
 		</ul>
 		<!-- End of Sidebar -->
 
@@ -181,21 +205,24 @@
 										<tbody align="center">
 											<c:forEach var="pic" items="${listPictures}"
 												varStatus="status">
-												<tr>
-													<td>${status.index + 1}</td>
-													<td>${pic.pictureId}</td>
-													<td><img
+												<tr style="vertical-align: middle;">
+													<td style="vertical-align: middle;">${status.index + 1}</td>
+													<td style="vertical-align: middle;">${pic.pictureId}</td>
+													<td style="vertical-align: middle;"><img
 														src="data:image/jpg;base64,${pic.base64Image}" width="84"
 														height="110" /></td>
-													<td>${pic.title}</td>
-													<td>${pic.author}</td>
-													<td>${pic.category.name}</td>
-													<td>$${pic.price}</td>
-													<td><fmt:formatDate pattern=' hh:mm:ss - MM/dd/yyyy' value='${pic.lastUpdateTime}'/></td>
-													<td align="center"><a href="edit_picture?id=${pic.pictureId}"
-														class="btn btn-success"><i
-															class="material-icons">&#xE147;</i> <span>Edit</span></a><br />
-														<br /> <a href="#deletePictureModal"
+													<td style="vertical-align: middle;">${pic.title}</td>
+													<td style="vertical-align: middle;">${pic.author}</td>
+													<td style="vertical-align: middle;">${pic.category.name}</td>
+													<td style="vertical-align: middle;">$${pic.price}</td>
+													<td style="vertical-align: middle;"><fmt:formatDate
+															pattern=' hh:mm:ss - MM/dd/yyyy'
+															value='${pic.lastUpdateTime}' /></td>
+													<td align="center"><a
+														href="edit_picture?id=${pic.pictureId}"
+														class="btn btn-success"><i class="material-icons">&#xE147;</i>
+															<span>Edit</span></a><br /> <br /> <a
+														href="#deletePictureModal"
 														onClick="toDeleteModal('${pic.pictureId}')"
 														class="btn btn-danger" data-toggle="modal"> <i
 															class="material-icons">&#xE15C;</i> <span>Delete</span></a></td>
@@ -245,7 +272,8 @@
 				<div id="addPictureModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<form action="create_picture" method="post" enctype="multipart/form-data">
+							<form action="create_picture" method="post"
+								enctype="multipart/form-data">
 								<div class="modal-header">
 									<h4 class="modal-title">Add Picture</h4>
 									<button type="button" class="close" data-dismiss="modal"
@@ -255,7 +283,7 @@
 									<div class="form-group">
 										<label>Category</label> <select id="category" name="category"
 											class="form-control" required>
-											<c:forEach items="${listCategories}" var="cat" >
+											<c:forEach items="${listCategories}" var="cat">
 												<option value="${cat.categoryId}">${cat.name}</option>
 											</c:forEach>
 										</select>
@@ -269,27 +297,30 @@
 											name="author" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label>Publish Date</label> <input type="text" id="publishDate"
-											name="publishDate" class="form-control" required>
+										<label>Publish Date</label> <input type="text"
+											id="publishDate" name="publishDate" class="form-control"
+											required>	
 									</div>
 									<div class="form-group">
 										<label>Picture Image</label> <input type="file" id="image"
-											name="image" class="form-control" required>
-											<img class="image" id="thumbnail" alt="Image Preview" style="width:20%; margin-top: 10px"/>
+											name="image" class="form-control" required> <img
+											class="image" id="thumbnail" alt="Image Preview"
+											style="width: 20%; margin-top: 10px" />
 									</div>
 									<div class="form-group">
 										<label>Price</label> <input type="text" id="price"
 											name="price" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label>Description</label> <textarea rows="7" id="description"
-											name="description" class="form-control" required></textarea>
+										<label>Description</label>
+										<textarea rows="7" id="description" name="description"
+											class="form-control" required></textarea>
 									</div>
 									<script>
-											$(document).ready(function() {
-												$('#description').richText();
-											});
-										</script>
+										$(document).ready(function() {
+											$('#description').richText();
+										});
+									</script>
 								</div>
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default"
@@ -328,9 +359,9 @@
 	<script src="js/demo/datatables-demo.js"></script>
 
 	<script src="js/picture-table.js"></script>
-	
+
 	<!-- datepicker -->
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	
+
 </body>
 </html>

@@ -34,12 +34,14 @@
 							<div
 								class="dropdown-menu position-absolute rounded-0 border-0 m-0">
 								<c:forEach var="c" items="${listCategory}">
-									<a href="view_category?id=${c.categoryId}" class="dropdown-item">${c.name}</a>
+									<a href="view_category?id=${c.categoryId}"
+										class="dropdown-item">${c.name}</a>
 								</c:forEach>
 							</div>
 						</div>
 						<c:forEach var="c" items="${listCategory}">
-							<a href="view_category?id=${c.categoryId}" class="nav-item nav-link">${c.name}</a>
+							<a href="view_category?id=${c.categoryId}"
+								class="nav-item nav-link">${c.name}</a>
 						</c:forEach>
 					</div>
 				</nav>
@@ -60,15 +62,15 @@
 						<div class="navbar-nav mr-auto py-0">
 							<a href="home" class="nav-item nav-link" id="home">Home</a> <a
 								href="#" class="nav-item nav-link active" id="shop">Shop</a> <a
-								href="view_picture?id=2" class="nav-item nav-link" id="shop_detail">Shop
-								Detail</a>
+								href="view_picture?id=2" class="nav-item nav-link"
+								id="shop_detail">Shop Detail</a>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle"
 									data-toggle="dropdown" id="page">Pages <i
 									class="fa fa-angle-down mt-1"></i></a>
 								<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-									<a href="cart.jsp" class="dropdown-item">Shopping Cart</a> <a
-										href="checkout.jsp" class="dropdown-item">Checkout</a>
+									<a href="view_cart" class="dropdown-item">Shopping Cart</a> <a
+										href="view_checkout" class="dropdown-item">Checkout</a>
 								</div>
 							</div>
 							<a href="contact.jsp" class="nav-item nav-link" id="contact">Contact</a>
@@ -78,10 +80,10 @@
 								class="fas fa-heart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
 								style="padding-bottom: 2px;">0</span>
-							</a> <a href="cart.jsp" class="btn px-0 ml-3"> <i
+							</a> <a href="view_cart" class="btn px-0 ml-3"> <i
 								class="fas fa-shopping-cart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
-								style="padding-bottom: 2px;">0</span>
+								style="padding-bottom: 2px;">${cart.totalQuantity}</span>
 							</a>
 						</div>
 					</div>
@@ -319,13 +321,19 @@
 												<del>$${pic.price + 10.0}</del>
 											</h6>
 										</div>
-										<div
-											class="d-flex align-items-center justify-content-center mb-1">
-											<small class="fa fa-star text-primary mr-1"></small> <small
-												class="fa fa-star text-primary mr-1"></small> <small
-												class="fa fa-star text-primary mr-1"></small> <small
-												class="fa fa-star text-primary mr-1"></small> <small
-												class="fa fa-star text-primary mr-1"></small> <small>(99)</small>
+										<div class="text-primary mr-2">
+											<c:forTokens items="${pic.ratingStars}" delims="," var="star">
+												<c:if test="${star eq 'on'}">
+													<small class="fas fa-star"></small>
+												</c:if>
+												<c:if test="${star eq 'half'}">
+													<small class="fas fa-star-half-alt"></small>
+												</c:if>
+												<c:if test="${star eq 'off'}">
+													<small class="far fa-star"></small>
+												</c:if>
+											</c:forTokens>
+											(${pic.reviews.size()})
 										</div>
 									</div>
 								</div>

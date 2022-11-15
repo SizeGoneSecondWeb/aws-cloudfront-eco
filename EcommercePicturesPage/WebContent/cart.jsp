@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +15,7 @@
 	<div class="container-fluid bg-dark mb-30">
 		<div class="row px-xl-5">
 			<div class="col-lg-3 d-none d-lg-block">
-				<a
-					class="btn d-flex align-items-center justify-content-between bg-primary w-100"
+				<a class="btn d-flex align-items-center justify-content-between bg-primary w-100"
 					data-toggle="collapse" href="#navbar-vertical"
 					style="height: 65px; padding: 0 30px;">
 					<h6 class="text-dark m-0">
@@ -27,24 +29,20 @@
 					<div class="navbar-nav w-100">
 						<div class="nav-item dropdown dropright">
 							<a href="#" class="nav-link dropdown-toggle"
-								data-toggle="dropdown">Dresses <i
+								data-toggle="dropdown">Hot <i
 								class="fa fa-angle-right float-right mt-1"></i></a>
 							<div
 								class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-								<a href="" class="dropdown-item">Men's Dresses</a> <a href=""
-									class="dropdown-item">Women's Dresses</a> <a href=""
-									class="dropdown-item">Baby's Dresses</a>
+								<c:forEach var="c" items="${listCategory}">
+									<a href="view_category?id=${c.categoryId}"
+										class="dropdown-item">${c.name}</a>
+								</c:forEach>
 							</div>
 						</div>
-						<a href="" class="nav-item nav-link">Shirts</a> <a href=""
-							class="nav-item nav-link">Jeans</a> <a href=""
-							class="nav-item nav-link">Swimwear</a> <a href=""
-							class="nav-item nav-link">Sleepwear</a> <a href=""
-							class="nav-item nav-link">Sportswear</a> <a href=""
-							class="nav-item nav-link">Jumpsuits</a> <a href=""
-							class="nav-item nav-link">Blazers</a> <a href=""
-							class="nav-item nav-link">Jackets</a> <a href=""
-							class="nav-item nav-link">Shoes</a>
+						<c:forEach var="c" items="${listCategory}">
+							<a href="view_category?id=${c.categoryId}"
+								class="nav-item nav-link">${c.name}</a>
+						</c:forEach>
 					</div>
 				</nav>
 			</div>
@@ -62,17 +60,17 @@
 					<div class="collapse navbar-collapse justify-content-between"
 						id="navbarCollapse" action="Header.html">
 						<div class="navbar-nav mr-auto py-0">
-							<a href="home" class="nav-item nav-link" id="home">Home</a>
-							<a href="view_category" class="nav-item nav-link" id="shop">Shop</a> <a
-								href="view_picture?id=2" class="nav-item nav-link" id="shop_detail">Shop
-								Detail</a>
+							<a href="home" class="nav-item nav-link" id="home">Home</a> <a
+								href="view_category" class="nav-item nav-link" id="shop">Shop</a>
+							<a href="view_picture?id=2" class="nav-item nav-link"
+								id="shop_detail">Shop Detail</a>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle active"
 									data-toggle="dropdown" id="page">Pages <i
 									class="fa fa-angle-down mt-1"></i></a>
 								<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
 									<a href="#" class="dropdown-item">Shopping Cart</a> <a
-										href="checkout.jsp" class="dropdown-item">Checkout</a>
+										href="view_checkout" class="dropdown-item">Checkout</a>
 								</div>
 							</div>
 							<a href="contact.jsp" class="nav-item nav-link" id="contact">Contact</a>
@@ -85,7 +83,7 @@
 							</a> <a href="#" class="btn px-0 ml-3"> <i
 								class="fas fa-shopping-cart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
-								style="padding-bottom: 2px;">0</span>
+								style="padding-bottom: 2px;">${cart.totalQuantity}</span>
 							</a>
 						</div>
 					</div>
@@ -114,156 +112,102 @@
 	<div class="container-fluid">
 		<div class="row px-xl-5">
 			<div class="col-lg-8 table-responsive mb-5">
-				<table
-					class="table table-light table-borderless table-hover text-center mb-0">
-					<thead class="thead-dark">
-						<tr>
-							<th>Products</th>
-							<th>Price</th>
-							<th>Quantity</th>
-							<th>Total</th>
-							<th>Remove</th>
-						</tr>
-					</thead>
-					<tbody class="align-middle">
-						<tr>
-							<td class="align-middle"><img src="img/product-1.jpg" alt=""
-								style="width: 50px;"> Product Name</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle">
-								<div class="input-group quantity mx-auto" style="width: 100px;">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus">
-											<i class="fa fa-minus"></i>
-										</button>
-									</div>
-									<input type="text"
-										class="form-control form-control-sm bg-secondary border-0 text-center"
-										value="1">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus">
-											<i class="fa fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle"><button
-									class="btn btn-sm btn-danger">
-									<i class="fa fa-times"></i>
-								</button></td>
-						</tr>
-						<tr>
-							<td class="align-middle"><img src="img/product-2.jpg" alt=""
-								style="width: 50px;"> Product Name</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle">
-								<div class="input-group quantity mx-auto" style="width: 100px;">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus">
-											<i class="fa fa-minus"></i>
-										</button>
-									</div>
-									<input type="text"
-										class="form-control form-control-sm bg-secondary border-0 text-center"
-										value="1">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus">
-											<i class="fa fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle"><button
-									class="btn btn-sm btn-danger">
-									<i class="fa fa-times"></i>
-								</button></td>
-						</tr>
-						<tr>
-							<td class="align-middle"><img src="img/product-3.jpg" alt=""
-								style="width: 50px;"> Product Name</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle">
-								<div class="input-group quantity mx-auto" style="width: 100px;">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus">
-											<i class="fa fa-minus"></i>
-										</button>
-									</div>
-									<input type="text"
-										class="form-control form-control-sm bg-secondary border-0 text-center"
-										value="1">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus">
-											<i class="fa fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle"><button
-									class="btn btn-sm btn-danger">
-									<i class="fa fa-times"></i>
-								</button></td>
-						</tr>
-						<tr>
-							<td class="align-middle"><img src="img/product-4.jpg" alt=""
-								style="width: 50px;"> Product Name</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle">
-								<div class="input-group quantity mx-auto" style="width: 100px;">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus">
-											<i class="fa fa-minus"></i>
-										</button>
-									</div>
-									<input type="text"
-										class="form-control form-control-sm bg-secondary border-0 text-center"
-										value="1">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus">
-											<i class="fa fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle"><button
-									class="btn btn-sm btn-danger">
-									<i class="fa fa-times"></i>
-								</button></td>
-						</tr>
-						<tr>
-							<td class="align-middle"><img src="img/product-5.jpg" alt=""
-								style="width: 50px;"> Product Name</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle">
-								<div class="input-group quantity mx-auto" style="width: 100px;">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus">
-											<i class="fa fa-minus"></i>
-										</button>
-									</div>
-									<input type="text"
-										class="form-control form-control-sm bg-secondary border-0 text-center"
-										value="1">
-									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus">
-											<i class="fa fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</td>
-							<td class="align-middle">$150</td>
-							<td class="align-middle"><button
-									class="btn btn-sm btn-danger">
-									<i class="fa fa-times"></i>
-								</button></td>
-						</tr>
-					</tbody>
-				</table>
+				<c:set var="cart" value="${sessionScope['cart']}"></c:set>
+				<c:if test="${cart.totalItems == 0}">
+					<h2>There's no items in your cart!</h2>
+				</c:if>
+				<c:if test="${cart.totalItems > 0}">
+					<div>
+						<form action="update_cart" method="post" id="cartForm">
+							<table
+								class="table table-light table-borderless table-hover text-center mb-0">
+								<thead class="thead-dark">
+									<tr>
+										<th>Index</th>
+										<th>Products</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+										<th>Remove</th>
+									</tr>
+								</thead>
+								<tbody class="align-middle">
+									<c:forEach items="${cart.items}" var="item" varStatus="status">
+										<tr>
+											<td class="align-middle">${status.index + 1}</td>
+											<td class="align-middle"><img class="img-fluid w-90"
+												style="height: 100px; padding: 10px; margin-left: auto; margin-right: auto;"
+												src="data:image/jpg;base64,${item.key.base64Image}"
+												alt="Image">${item.key.title}</td>
+											<td class="align-middle"><fmt:formatNumber
+													value="${item.key.price}" type="currency"
+													currencySymbol="$" /></td>
+											<td class="align-middle"><input type="hidden"
+												name="pictureId" value="${item.key.pictureId}" />
+												<div class="input-group quantity mx-auto"
+													style="width: 100px;">
+													<div class="input-group-btn">
+														<button type="button"
+															class="btn btn-sm btn-primary btn-minus">
+															<i class="fa fa-minus"></i>
+														</button>
+													</div>
+													<input type="text" name="quantity${status.index + 1}"
+														class="form-control form-control-sm bg-secondary border-0 text-center"
+														value="${item.value}">
+													<div class="input-group-btn">
+														<button type="button"
+															class="btn btn-sm btn-primary btn-plus">
+															<i class="fa fa-plus"></i>
+														</button>
+													</div>
+												</div></td>
+											<td class="align-middle"><fmt:formatNumber
+													value="${item.value * item.key.price}" type="currency"
+													currencySymbol="$" /></td>
+											<td class="align-middle"><a
+												href="remove_from_cart?picture_id=${item.key.pictureId}"
+												class="btn btn-sm btn-danger"> <i class="fa fa-times"></i>
+											</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<div class="d-flex align-items-center mb-4 pt-2">
+								<button type="submit"
+									class="btn btn-block btn-primary font-weight-bold my-3 py-3">Update
+									Cart</button>
+								&nbsp;
+								<button type="button" data-toggle="modal"
+									data-target="#clearCartModel"
+									class="btn btn-block btn-primary font-weight-bold my-3 py-3">Clear
+									Cart</button>
+							</div>
+						</form>
+					</div>
+				</c:if>
 			</div>
+			<!-- Modal -->
+			<div id="clearCartModel" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Are you sure?</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<p>Do you really want to clear the cart?.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary" id="clearCart">Yes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<div class="col-lg-4">
 				<form class="mb-30" action="">
 					<div class="input-group">
@@ -280,8 +224,15 @@
 				<div class="bg-light p-30 mb-5">
 					<div class="border-bottom pb-2">
 						<div class="d-flex justify-content-between mb-3">
+							<h6>Total quantity</h6>
+							<h6>${cart.totalQuantity} pictures</h6>
+						</div>
+						<div class="d-flex justify-content-between mb-3">
 							<h6>Subtotal</h6>
-							<h6>$150</h6>
+							<h6>
+								<fmt:formatNumber value="${cart.totalAmount}" type="currency"
+									currencySymbol="$" />
+							</h6>
 						</div>
 						<div class="d-flex justify-content-between">
 							<h6 class="font-weight-medium">Shipping</h6>
@@ -291,11 +242,14 @@
 					<div class="pt-2">
 						<div class="d-flex justify-content-between mt-2">
 							<h5>Total</h5>
-							<h5>$160</h5>
+							<h5>
+								<fmt:formatNumber value="${cart.totalAmount + 10}"
+									type="currency" currencySymbol="$" />
+							</h5>
 						</div>
-						<button
+						<a href="view_checkout"
 							class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed
-							To Checkout</button>
+							To Checkout</a>
 					</div>
 				</div>
 			</div>
@@ -327,6 +281,41 @@
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					
+					$("#clearCart").click(function(){
+						window.location = 'clear_cart';
+					});
+					
+					$("#cartForm").validate({
+						rules : {
+							<c:forEach items="${cart.items}" var="item" varStatus="status">
+								quantity${status.index + 1} : 
+								{
+									required : true, 
+									number : true,
+									min : 1
+								},						
+							</c:forEach>
+						},
+
+						messages : {
+							<c:forEach items="${cart.items}" var="item" varStatus="status">
+								quantity${status.index + 1} : 
+								{
+									required : "Please enter quantity",
+									number : "Quantity must be a number",
+									min : "Quantity must be greater than 0"
+								},						
+							</c:forEach>
+						}
+					});
+				});
+	</script>
 </body>
 
 </html>

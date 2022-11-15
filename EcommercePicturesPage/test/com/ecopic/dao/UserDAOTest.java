@@ -25,9 +25,9 @@ public class UserDAOTest{
 	@Test
 	public void testCreateUsers() {
 		Users user1 = new Users();
-		user1.setEmail("bicdreamer2@gmail.com");
-		user1.setFullName("Lin Lin ne");
-		user1.setPassword("011102");
+		user1.setEmail("admin2@gmail.com");
+		user1.setFullName("admin2");
+		user1.setPassword("123456");
 		
 		user1= userDAO.create(user1);
 		
@@ -92,7 +92,7 @@ public class UserDAOTest{
 	@Test
 	public void testCount() {
 		long totalUsers = userDAO.count();
-		assertEquals(5,totalUsers);
+		assertEquals(1,totalUsers);
 	}
 	
 	@Test

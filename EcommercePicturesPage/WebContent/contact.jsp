@@ -71,8 +71,8 @@
 									data-toggle="dropdown" id="page">Pages <i
 									class="fa fa-angle-down mt-1"></i></a>
 								<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-									<a href="cart.jsp" class="dropdown-item">Shopping Cart</a> <a
-										href="checkout.jsp" class="dropdown-item">Checkout</a>
+									<a href="view_cart" class="dropdown-item">Shopping Cart</a> <a
+										href="view_checkout" class="dropdown-item">Checkout</a>
 								</div>
 							</div>
 							<a href="#" class="nav-item nav-link active" id="contact">Contact</a>
@@ -82,10 +82,10 @@
 								class="fas fa-heart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
 								style="padding-bottom: 2px;">0</span>
-							</a> <a href="cart.jsp" class="btn px-0 ml-3"> <i
+							</a> <a href="view_cart" class="btn px-0 ml-3"> <i
 								class="fas fa-shopping-cart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
-								style="padding-bottom: 2px;">0</span>
+								style="padding-bottom: 2px;">${cart.totalQuantity}</span>
 							</a>
 						</div>
 					</div>

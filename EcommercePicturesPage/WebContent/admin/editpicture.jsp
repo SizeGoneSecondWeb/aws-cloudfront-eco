@@ -112,6 +112,30 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_customer"> <i class="fas fa-fw fa-table"></i> <span>Customer
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item "><a class="nav-link"
+				href="list_review"> <i class="fas fa-fw fa-table"></i> <span>Review
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_order"> <i class="fas fa-fw fa-table"></i> <span>Order
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -138,7 +162,7 @@
 								<form action="update_picture" method="post"
 									enctype="multipart/form-data">
 									<div class="modal-header">
-										<h4 class="modal-title">Edit Picture</h4>
+										<h4 class="modal-title" align="center">Edit Picture</h4>
 									</div>
 									<div class="modal-body"
 										style="margin-left: 200px; margin-right: 200px">

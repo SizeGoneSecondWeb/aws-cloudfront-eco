@@ -35,10 +35,7 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<!-- <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
-<!-- <link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+	
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- script hỗ trợ phân trang -->
@@ -107,6 +104,30 @@
 			<li class="nav-item"><a class="nav-link" href="list_pictures">
 					<i class="fas fa-fw fa-table"></i> <span>Product</span>
 			</a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_customer"> <i class="fas fa-fw fa-table"></i> <span>Customer
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item "><a class="nav-link"
+				href="list_review"> <i class="fas fa-fw fa-table"></i> <span>Review
+						Tables</span></a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+			
+			<!-- Nav Item - Tables -->
+			<li class="nav-item"><a class="nav-link"
+				href="list_order"> <i class="fas fa-fw fa-table"></i> <span>Order
+						Tables</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">

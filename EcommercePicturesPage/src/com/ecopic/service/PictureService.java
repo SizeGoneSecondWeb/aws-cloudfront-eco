@@ -13,14 +13,18 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.eclipse.persistence.jaxb.xmlmodel.XmlElementNillable;
 
 import com.ecopic.dao.CategoryDAO;
 import com.ecopic.dao.PictureDAO;
+import com.ecopic.dao.ReviewDAO;
 import com.ecopic.entity.Category;
+import com.ecopic.entity.Customer;
 import com.ecopic.entity.Picture;
+import com.ecopic.entity.Review;
 
 public class PictureService {
 
@@ -28,6 +32,7 @@ public class PictureService {
 	private HttpServletResponse response;
 	private PictureDAO pictureDAO;
 	private CategoryDAO categoryDAO;
+	private ReviewDAO reviewDAO;
 
 	public PictureService( HttpServletRequest request, HttpServletResponse response) {
 		super();
@@ -35,6 +40,7 @@ public class PictureService {
 		this.response = response;
 		pictureDAO = new PictureDAO();
 		categoryDAO = new CategoryDAO();
+		reviewDAO = new ReviewDAO();
 	}
 
 	public void listPictures() throws ServletException, IOException {
@@ -188,8 +194,25 @@ public class PictureService {
 
 	public void viewPictureDetail() throws ServletException, IOException {
 		Integer pictureId = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
 		Picture picture = pictureDAO.get(pictureId);
-		request.setAttribute("picture", picture);
+		
+		session.setAttribute("picture", picture);
+		Review existReview = null;
+		Customer customer = (Customer) session.getAttribute("loggedCustomer");
+		if (customer!=null) {
+			existReview= reviewDAO.findByCustomerAndPicture(customer.getCustomerId(), pictureId);
+		}
+		 
+		request.setAttribute("existReview", existReview);
+		
+		String redirectURL = request.getRequestURI().toString();
+		String query = request.getQueryString();
+		if(query != null) {
+			redirectURL = redirectURL.concat("?").concat(query);
+		}
+		
+		session.setAttribute("redirectURL", redirectURL);
 		
 		String listPageString = "detail.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPageString);

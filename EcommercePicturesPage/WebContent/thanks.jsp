@@ -170,10 +170,9 @@
 		<div class="wrapper-1">
 			</br></br>
 			<div class="wrapper-2">
-				<h1>Thank you !</h1>
-				<p>Cảm ơn vì đã mua sắm ở cửa hàng của chúng tôi.</p>
-				<p>Chúc bạn sẽ có được nhiều trải nghiệm tuyệt vời!</p>
-				<button class="go-home" onclick="location.href='home'"">go home</button>
+				<h1>Order Successfully!</h1>
+					<p>${message}</p>
+				<button class="go-home" onclick="location.href='home'">go home</button>
 			</div>
 			</br></br>
 			<!-- <div class="footer-like">
