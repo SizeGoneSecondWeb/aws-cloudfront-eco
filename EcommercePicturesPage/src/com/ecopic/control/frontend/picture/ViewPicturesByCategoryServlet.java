@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ecopic.dao.PictureDAO;
 import com.ecopic.service.PictureService;
 
 @WebServlet("/view_category")

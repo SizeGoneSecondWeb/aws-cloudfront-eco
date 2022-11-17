@@ -6,7 +6,6 @@ function toDeleteModal(id) {
 }
 
 $(document).ready(function() {
-	$("#publishDate").datepicker();
 
 	$("#image").change(function() {
 		showImageThumbnail(this);

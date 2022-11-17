@@ -141,7 +141,7 @@
 								<label><b>Total Amount</b></label> <input readonly="readonly"
 									class="form-control" type="text"
 									value="<fmt:formatNumber
-													value="${order.total}" type="currency" currencySymbol="$" />">
+													value="${order.total + 10}" type="currency" currencySymbol="$" />">
 							</div>
 							<div class="col-md-6 form-group">
 								<label><b>Recipient Name</b></label> <input readonly="readonly"
@@ -203,8 +203,10 @@
 								<tr align="center">
 									<th colspan="4" align="right">TOTAL</th>
 									<td>${order.pictureCopies}</td>
-									<td><fmt:formatNumber value="${order.total}"
-											type="currency" currencySymbol="$" /></td>
+									<td><fmt:formatNumber value="${order.total + 10}"
+											type="currency" currencySymbol="$" />
+										<br/>(Shipping fee included)
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -240,28 +242,6 @@
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#orderForm").validate({
-				rules : {
-					recipientName : "required",
-					recipientPhone : "required",
-					address : "required",
-					country : "required",
-					city : "required",
-				},
-
-				messages : {
-					recipientName : "Please enter recipient name",
-					recipientPhone : "Please enter recipient phone",
-					address : "Please enter address",
-					country : "Please enter country",
-					city : "Please enter city",
-				}
-			});
-		});
-	</script>
 </body>
 
 </html>

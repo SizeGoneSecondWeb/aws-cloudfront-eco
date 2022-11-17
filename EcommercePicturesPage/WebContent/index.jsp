@@ -118,9 +118,9 @@
 										class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Anime</h1>
 									<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Tam
 										kiếm phái</p>
-									<a
+									<!-- <a
 										class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-										href="#">Shop Now</a>
+										href="#">Shop Now</a> -->
 								</div>
 							</div>
 						</div>
@@ -136,9 +136,9 @@
 										Hoa Linh</h1>
 									<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Ha
 										sa giiiiii</p>
-									<a
+									<!-- <a
 										class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-										href="#">Shop Now</a>
+										href="#">Shop Now</a> -->
 								</div>
 							</div>
 						</div>
@@ -154,9 +154,9 @@
 										phong cảnh</h1>
 									<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Vì
 										mất đi ánh mặt trời</p>
-									<a
+									<!-- <a
 										class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-										href="#">Shop Now</a>
+										href="#">Shop Now</a> -->
 								</div>
 							</div>
 						</div>
@@ -172,9 +172,9 @@
 										tả thực</h1>
 									<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Anh
 										trai học bách khoa cơ khí bỏ ngang sang học IT</p>
-									<a
+									<!-- <a
 										class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-										href="#">Shop Now</a>
+										href="#">Shop Now</a> -->
 								</div>
 							</div>
 						</div>
@@ -257,7 +257,6 @@
 							</div>
 							<div class="flex-fill pl-3">
 								<h6>${cat.name}</h6>
-								<small class="text-body">?? Products</small>
 							</div>
 						</div>
 					</a>
@@ -267,15 +266,14 @@
 	</div>
 	<!-- Categories End -->
 
-
 	<!-- Products Start -->
 	<div class="container-fluid pt-5 pb-3">
 		<h2
 			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-			<span class="bg-secondary pr-3">Featured Products</span>
+			<span class="bg-secondary pr-3">Best Selling Pictures</span>
 		</h2>
 		<div class="row px-xl-5">
-			<c:forEach items="${listPictures}" var="pic">
+			<c:forEach items="${listBestSellingPictures}" var="pic">
 				<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
 					<div class="product-item bg-light mb-4">
 						<div class="product-img position-relative overflow-hidden">
@@ -283,13 +281,8 @@
 								style="height: 325.788px; padding: 10px; display: block; margin-left: auto; margin-right: auto;"
 								src="data:image/jpg;base64,${pic.base64Image}" alt="">
 							<div class="product-action">
-								<a class="btn btn-outline-dark btn-square" href=""><i
-									class="fa fa-shopping-cart"></i></a> <a
-									class="btn btn-outline-dark btn-square" href=""><i
-									class="far fa-heart"></i></a> <a
-									class="btn btn-outline-dark btn-square" href=""><i
-									class="fa fa-sync-alt"></i></a> <a
-									class="btn btn-outline-dark btn-square" href=""><i
+									<a class="btn btn-outline-dark btn-square" 
+									href="view_picture?id=${pic.pictureId}"><i
 									class="fa fa-search"></i></a>
 							</div>
 						</div>
@@ -299,9 +292,6 @@
 							<div
 								class="d-flex align-items-center justify-content-center mt-2">
 								<h5>$${pic.price}</h5>
-								<h6 class="text-muted ml-2">
-									<del>$${pic.price + 10}</del>
-								</h6>
 							</div>
 							<div class="text-primary mr-2">
 								<c:forTokens items="${pic.ratingStars}" delims="," var="star">
@@ -324,7 +314,64 @@
 		</div>
 	</div>
 	<!-- Products End -->
-
+	
+	<!-- Products Start -->
+	<div class="container-fluid pt-5 pb-3">
+		<h2
+			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+			<span class="bg-secondary pr-3">Most Favored Pictures</span>
+		</h2>
+		<div class="row px-xl-5">
+			<c:forEach items="${listMostFavoredPictures}" var="pic">
+				<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+					<div class="product-item bg-light mb-4">
+						<div class="product-img position-relative overflow-hidden">
+							<img class="img-fluid w-90"
+								style="height: 325.788px; padding: 10px; display: block; margin-left: auto; margin-right: auto;"
+								src="data:image/jpg;base64,${pic.base64Image}" alt="">
+							<div class="product-action">
+								<!-- <a class="btn btn-outline-dark btn-square" href=""><i
+									class="fa fa-shopping-cart"></i></a> <a
+									class="btn btn-outline-dark btn-square" href=""><i
+									class="far fa-heart"></i></a> <a
+									class="btn btn-outline-dark btn-square" href=""><i
+									class="fa fa-sync-alt"></i></a>  -->
+									<a class="btn btn-outline-dark btn-square" 
+									href="view_picture?id=${pic.pictureId}"><i
+									class="fa fa-search"></i></a>
+							</div>
+						</div>
+						<div class="text-center py-4">
+							<a class="h6 text-decoration-none text-truncate" 
+							href="view_picture?id=${pic.pictureId}">${pic.title}</a>
+							<div
+								class="d-flex align-items-center justify-content-center mt-2">
+								<h5>$${pic.price}</h5>
+								<!-- <h6 class="text-muted ml-2">
+									<del>$${pic.price + 10}</del>
+								</h6> -->
+							</div>
+							<div class="text-primary mr-2">
+								<c:forTokens items="${pic.ratingStars}" delims="," var="star">
+									<c:if test="${star eq 'on'}">
+										<small class="fas fa-star"></small> 
+									</c:if>
+									<c:if test="${star eq 'half'}">
+										<small class="fas fa-star-half-alt"></small> 
+									</c:if>
+									<c:if test="${star eq 'off'}">
+										<small class="far fa-star"></small>
+									</c:if>
+								</c:forTokens>
+								(${pic.reviews.size()})
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+	<!-- Products End -->
 
 	<!-- Offer Start -->
 	<div class="container-fluid pt-5 pb-3">
@@ -358,7 +405,7 @@
 	<div class="container-fluid pt-5 pb-3">
 		<h2
 			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-			<span class="bg-secondary pr-3">Recent Products</span>
+			<span class="bg-secondary pr-3">New Pictures</span>
 		</h2>
 		<div class="row px-xl-5">
 			<c:forEach items="${listNewPictures}" var="newpic">
@@ -369,13 +416,14 @@
 								style="height: 325.788px; padding: 10px; display: block; margin-left: auto; margin-right: auto;"
 								src="data:image/jpg;base64,${newpic.base64Image}" alt="">
 							<div class="product-action">
-								<a class="btn btn-outline-dark btn-square" href=""><i
+								<!-- <a class="btn btn-outline-dark btn-square" href=""><i
 									class="fa fa-shopping-cart"></i></a> <a
 									class="btn btn-outline-dark btn-square" href=""><i
 									class="far fa-heart"></i></a> <a
 									class="btn btn-outline-dark btn-square" href=""><i
-									class="fa fa-sync-alt"></i></a> <a
-									class="btn btn-outline-dark btn-square" href=""><i
+									class="fa fa-sync-alt"></i></a>  -->
+									<a class="btn btn-outline-dark btn-square" 
+									href="view_picture?id=${newpic.pictureId}"><i
 									class="fa fa-search"></i></a>
 							</div>
 						</div>
@@ -385,9 +433,9 @@
 							<div
 								class="d-flex align-items-center justify-content-center mt-2">
 								<h5>$${newpic.price}</h5>
-								<h6 class="text-muted ml-2">
+								<!-- <h6 class="text-muted ml-2">
 									<del>$${newpic.price}</del>
-								</h6>
+								</h6> -->
 							</div>
 							<div class="text-primary mr-2">
 								<c:forTokens items="${newpic.ratingStars}" delims="," var="star">

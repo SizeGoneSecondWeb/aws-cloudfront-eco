@@ -36,8 +36,6 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<!-- css of datepicker -->
-<link rel="stylesheet" href="css/jquery-ui.min.css">
 
 <!-- editer text -->
 <link rel="stylesheet"
@@ -80,7 +78,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -216,7 +214,7 @@
 													<td style="vertical-align: middle;">${pic.category.name}</td>
 													<td style="vertical-align: middle;">$${pic.price}</td>
 													<td style="vertical-align: middle;"><fmt:formatDate
-															pattern=' hh:mm:ss - MM/dd/yyyy'
+															pattern=' hh:mm:ss - yyyy-MM-dd'
 															value='${pic.lastUpdateTime}' /></td>
 													<td align="center"><a
 														href="edit_picture?id=${pic.pictureId}"
@@ -297,7 +295,7 @@
 											name="author" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label>Publish Date</label> <input type="text"
+										<label>Publish Date</label> <input type="date"
 											id="publishDate" name="publishDate" class="form-control"
 											required>	
 									</div>
@@ -360,8 +358,6 @@
 
 	<script src="js/picture-table.js"></script>
 
-	<!-- datepicker -->
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 
 </body>
 </html>

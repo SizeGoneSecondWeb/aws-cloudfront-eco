@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -71,7 +71,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -189,6 +189,7 @@
 													<th>Payment Method</th>
 													<td style="width: 80%;"><select name="paymentMethod"
 														class="form-control" required>
+															<option value="${order.paymentMethod}" selected="selected">${order.paymentMethod}</option>
 															<option value="Cash On Delivery">Cash On
 																Delivery</option>
 															<option value="Paypal">Paypal</option>

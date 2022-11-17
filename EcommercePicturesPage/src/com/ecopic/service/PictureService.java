@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 
 import org.eclipse.persistence.jaxb.xmlmodel.XmlElementNillable;
 
+import com.ecopic.control.admin.picture.ListPictureServlet;
 import com.ecopic.dao.CategoryDAO;
 import com.ecopic.dao.PictureDAO;
 import com.ecopic.dao.ReviewDAO;
@@ -34,7 +35,7 @@ public class PictureService {
 	private CategoryDAO categoryDAO;
 	private ReviewDAO reviewDAO;
 
-	public PictureService( HttpServletRequest request, HttpServletResponse response) {
+	public PictureService(HttpServletRequest request, HttpServletResponse response) {
 		super();
 		this.request = request;
 		this.response = response;
@@ -91,7 +92,7 @@ public class PictureService {
 		Float price = Float.parseFloat(request.getParameter("price"));
 		String description = request.getParameter("description");
 
-		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date publishDate = null;
 		try {
 			publishDate = dateFormat.parse(request.getParameter("publishDate"));
@@ -158,12 +159,12 @@ public class PictureService {
 
 	public void deletePicture() throws ServletException, IOException {
 		Integer pictureId = Integer.parseInt(request.getParameter("idd"));
-		
+
 		pictureDAO.delete(pictureId);
-		
+
 		String message = "The picture (ID: %d) has been deleted successfully!";
 		message = String.format(message, pictureId);
-		
+
 		listPictures(message);
 	}
 
@@ -171,49 +172,67 @@ public class PictureService {
 		List<Picture> lisPictures = null;
 		int categoryId;
 		Category category = null;
+
+		PictureDAO pictureDAO = new PictureDAO();
+
+		Integer offset = 1;
+		if (request.getParameter("offset") != null) {
+			offset = Integer.parseInt(request.getParameter("offset"));
+		}
+		request.setAttribute("currentPage", offset);
 		
-		if (request.getParameter("id") != null)
-		{
-			categoryId=Integer.parseInt(request.getParameter("id"));
-			lisPictures = pictureDAO.listByCategory(categoryId);
+		long countPictures = 0;
+		
+		if (request.getParameter("id") != null) {
+			categoryId = Integer.parseInt(request.getParameter("id"));
+			lisPictures = pictureDAO.listByCategory(categoryId, 6, offset * 6);
 			category = categoryDAO.get(categoryId);
 			request.setAttribute("category", category);
-			
-		}else
-		{
-			lisPictures=pictureDAO.listAll();
+			request.setAttribute("currentId", categoryId);
+			countPictures = pictureDAO.countByCategory(categoryId)/6;
+			if (pictureDAO.countByCategory(categoryId)%6 != 0) {
+				countPictures++;
+			}
+		} else {
+			lisPictures = pictureDAO.listOffsetPictures(6, offset * 6);
+			countPictures = pictureDAO.count()/6;
+			if (pictureDAO.count()%6 != 0) {
+				countPictures++;
+			}
 		}
-		
+			
+		request.setAttribute("countPictures", countPictures);
+
 		request.setAttribute("lisPictures", lisPictures);
-	
+
 		String listPageString = "shop.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPageString);
 		requestDispatcher.forward(request, response);
-		
+
 	}
 
 	public void viewPictureDetail() throws ServletException, IOException {
 		Integer pictureId = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		Picture picture = pictureDAO.get(pictureId);
-		
+
 		session.setAttribute("picture", picture);
 		Review existReview = null;
 		Customer customer = (Customer) session.getAttribute("loggedCustomer");
-		if (customer!=null) {
-			existReview= reviewDAO.findByCustomerAndPicture(customer.getCustomerId(), pictureId);
+		if (customer != null) {
+			existReview = reviewDAO.findByCustomerAndPicture(customer.getCustomerId(), pictureId);
 		}
-		 
+
 		request.setAttribute("existReview", existReview);
-		
+
 		String redirectURL = request.getRequestURI().toString();
 		String query = request.getQueryString();
-		if(query != null) {
+		if (query != null) {
 			redirectURL = redirectURL.concat("?").concat(query);
 		}
-		
+
 		session.setAttribute("redirectURL", redirectURL);
-		
+
 		String listPageString = "detail.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPageString);
 		requestDispatcher.forward(request, response);
@@ -222,17 +241,17 @@ public class PictureService {
 	public void search() throws ServletException, IOException {
 		String keyword = request.getParameter("keyword");
 		List<Picture> resultList = null;
-		if(keyword.equals("")) {
+		if (keyword.equals("")) {
 			resultList = pictureDAO.listAll();
-		}else {
+		} else {
 			resultList = pictureDAO.search(keyword);
 		}
 		request.setAttribute("lisPictures", resultList);
 		request.setAttribute("keyword", keyword);
-		
+
 		String listPageString = "shop.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPageString);
 		requestDispatcher.forward(request, response);
-		
+
 	}
 }

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.ecopic.entity.Picture;
@@ -18,6 +20,10 @@ import com.ecopic.entity.Picture;
  */
 @Entity
 @Table(name = "order_detail", catalog = "ecopic")
+@NamedQueries({
+	@NamedQuery(name="OrderDetail.bestSelling",query = "SELECT od.picture FROM OrderDetail od GROUP by od.picture.pictureId "
+			+ "ORDER BY SUM(od.quantity) DESC"),
+})
 public class OrderDetail implements java.io.Serializable {
 
 	private OrderDetailId id =  new OrderDetailId();

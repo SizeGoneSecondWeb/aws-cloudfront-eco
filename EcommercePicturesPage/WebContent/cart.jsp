@@ -154,7 +154,7 @@
 													</div>
 													<input type="text" name="quantity${status.index + 1}"
 														class="form-control form-control-sm bg-secondary border-0 text-center"
-														value="${item.value}">
+														value="${item.value}" required>
 													<div class="input-group-btn">
 														<button type="button"
 															class="btn btn-sm btn-primary btn-plus">
@@ -296,7 +296,6 @@
 							<c:forEach items="${cart.items}" var="item" varStatus="status">
 								quantity${status.index + 1} : 
 								{
-									required : true, 
 									number : true,
 									min : 1
 								},						
@@ -307,7 +306,6 @@
 							<c:forEach items="${cart.items}" var="item" varStatus="status">
 								quantity${status.index + 1} : 
 								{
-									required : "Please enter quantity",
 									number : "Quantity must be a number",
 									min : "Quantity must be greater than 0"
 								},						

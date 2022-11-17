@@ -61,11 +61,11 @@
 										<div class="form-group">
 											<input type="email" class="form-control form-control-user"
 												id="email" name="email" aria-describedby="emailHelp"
-												placeholder="Enter Email Address...">
+												placeholder="Enter Email Address..." required>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												name="password" id="password" placeholder="Password">
+												name="password" id="password" placeholder="Password" required>
 										</div>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
@@ -116,31 +116,7 @@
 	<script src="js/sb-admin-2.min.js"></script>
 
 	<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
-	<!-- test script -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#loginForm").validate({
-				rules : {
-					email : {
-						required : true,
-						email : true
-					},
-
-					password : "required",
-				},
-
-				messages : {
-					email : {
-						required : "",
-						email : ""
-					},
-
-					password : ""
-				}
-			});
-		});
-	</script>
+	
 </body>
 
 

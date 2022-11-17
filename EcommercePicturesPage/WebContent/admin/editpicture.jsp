@@ -79,7 +79,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -197,10 +197,10 @@
 												required>
 										</div>
 										<div class="form-group">
-											<label>Publish Date</label> <input type="text"
+											<label>Publish Date</label> <input type="date"
 												id="publishDate" name="publishDate" class="form-control"
 												required
-												value="<fmt:formatDate pattern='MM/dd/yyyy' value='${picture.publishDate}'/>" />
+												value="<fmt:formatDate pattern='yyyy-MM-dd' value='${picture.publishDate}'/>" />
 										</div>
 										<div class="form-group">
 											<label>Picture Image</label>

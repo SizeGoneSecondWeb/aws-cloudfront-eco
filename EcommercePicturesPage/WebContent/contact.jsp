@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,24 +28,20 @@
 					<div class="navbar-nav w-100">
 						<div class="nav-item dropdown dropright">
 							<a href="#" class="nav-link dropdown-toggle"
-								data-toggle="dropdown">Dresses <i
+								data-toggle="dropdown">Hot <i
 								class="fa fa-angle-right float-right mt-1"></i></a>
 							<div
 								class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-								<a href="" class="dropdown-item">Men's Dresses</a> <a href=""
-									class="dropdown-item">Women's Dresses</a> <a href=""
-									class="dropdown-item">Baby's Dresses</a>
+								<c:forEach var="c" items="${listCategory}">
+									<a href="view_category?id=${c.categoryId}"
+										class="dropdown-item">${c.name}</a>
+								</c:forEach>
 							</div>
 						</div>
-						<a href="" class="nav-item nav-link">Shirts</a> <a href=""
-							class="nav-item nav-link">Jeans</a> <a href=""
-							class="nav-item nav-link">Swimwear</a> <a href=""
-							class="nav-item nav-link">Sleepwear</a> <a href=""
-							class="nav-item nav-link">Sportswear</a> <a href=""
-							class="nav-item nav-link">Jumpsuits</a> <a href=""
-							class="nav-item nav-link">Blazers</a> <a href=""
-							class="nav-item nav-link">Jackets</a> <a href=""
-							class="nav-item nav-link">Shoes</a>
+						<c:forEach var="c" items="${listCategory}">
+							<a href="view_category?id=${c.categoryId}"
+								class="nav-item nav-link">${c.name}</a>
+						</c:forEach>
 					</div>
 				</nav>
 			</div>

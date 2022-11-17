@@ -29,10 +29,13 @@ public class HomeServlet extends HttpServlet {
 		PictureDAO pictureDAO = new PictureDAO();
 		
 		List<Picture> listNewPictures = pictureDAO.listNewPictures();
-		List<Picture> listPictures = pictureDAO.listAll();
+		List<Picture>  listBestSellingPictures = pictureDAO.listBestSellingPictures();
+		List<Picture>  listMostFavoredPictures = pictureDAO.listMostFavoredPictures();
 		
 		request.setAttribute("listNewPictures", listNewPictures);
-		request.setAttribute("listPictures", listPictures);
+		request.setAttribute("listBestSellingPictures", listBestSellingPictures);
+		request.setAttribute("listMostFavoredPictures", listMostFavoredPictures);
+		
 		String homepage ="index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
 		dispatcher.forward(request, response);

@@ -77,7 +77,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="index.jsp"> <i
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -194,7 +194,7 @@
 												<tr>
 													<td>${status.index + 1}</td>
 													<td>${cat.categoryId}</td>
-													<td>${cat.name}</td>
+													<td class="col-sm-6">${cat.name}</td>
 													<td align="center"><a href="#editCategoryModal"
 														onClick="toEditModal('${cat.categoryId}','${cat.name}')" 
 														class="btn btn-success"

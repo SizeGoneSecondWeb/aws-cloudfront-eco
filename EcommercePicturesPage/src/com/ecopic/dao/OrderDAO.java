@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ecopic.entity.Customer;
 import com.ecopic.entity.PictureOrder;
 
 public class OrderDAO extends JpaDAO<PictureOrder> implements GenericDAO<PictureOrder> {
@@ -58,5 +57,9 @@ public class OrderDAO extends JpaDAO<PictureOrder> implements GenericDAO<Picture
 		return super.findWithNamedQuery("PictureOrder.findByCustomer", 
 				"customerId", customerId);
 	}
-
+	
+	public List<PictureOrder> listMostRecentSales(){
+		return super.findWithNamedQuery("PictureOrder.findAll", 0, 3);
+	}
+	
 }

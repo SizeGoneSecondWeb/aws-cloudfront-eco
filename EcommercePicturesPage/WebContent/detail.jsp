@@ -219,37 +219,10 @@
 						</form>
 					</div> -->
 					<div class="d-flex align-items-center mb-4 pt-2">
-						<div class="input-group quantity mr-3" style="width: 130px;">
-							<div class="input-group-btn">
-								<button class="btn btn-primary btn-minus">
-									<i class="fa fa-minus"></i>
-								</button>
-							</div>
-							<input type="text"
-								class="form-control bg-secondary border-0 text-center" value="1">
-							<div class="input-group-btn">
-								<button class="btn btn-primary btn-plus">
-									<i class="fa fa-plus"></i>
-								</button>
-							</div>
-						</div>
 						<button class="btn btn-primary px-3" id="buttonAddToCart">
 							<i class="fa fa-shopping-cart mr-1"></i> Add To Cart
 						</button>
 					</div>
-					<!-- <div class="d-flex pt-2">
-						<strong class="text-dark mr-2">Share on:</strong>
-						<div class="d-inline-flex">
-							<a class="text-dark px-2" href=""> <i
-								class="fab fa-facebook-f"></i>
-							</a> <a class="text-dark px-2" href=""> <i class="fab fa-twitter"></i>
-							</a> <a class="text-dark px-2" href=""> <i
-								class="fab fa-linkedin-in"></i>
-							</a> <a class="text-dark px-2" href=""> <i
-								class="fab fa-pinterest"></i>
-							</a>
-						</div>
-					</div> -->
 				</div>
 			</div>
 		</div>
@@ -259,9 +232,6 @@
 					<div class="nav nav-tabs mb-4">
 						<a class="nav-item nav-link text-dark active" data-toggle="tab"
 							href="#tab-pane-1">Description</a>
-						<!-- <a
-							class="nav-item nav-link text-dark" data-toggle="tab"
-							href="#tab-pane-2">Information</a>  -->
 						<a class="nav-item nav-link text-dark" data-toggle="tab"
 							href="#tab-pane-3">Reviews (${picture.reviews.size()})</a>
 					</div>
@@ -343,20 +313,20 @@
 												<div class="d-flex my-3">
 													<p class="mb-0 mr-2">Your Rating * :</p>
 													<div id="rateYo"></div>
-													<input type="hidden" id="rating" name="rating" value="0">
+													<input type="hidden" id="rating" name="rating" value="5">
 													<input type="hidden" id="pictureId" name="pictureId"
 														value="${picture.pictureId}">
 												</div>
 												<div class="form-group">
 													<label>Your Title *</label> <input id="headline"
 														class="form-control" name="headline"
-														placeholder="Headline or summary for your review">
+														placeholder="Headline or summary for your review" required>
 												</div>
 												<div class="form-group">
 													<label>Your Review *</label>
 													<textarea id="comment" name="comment" cols="30" rows="5"
 														class="form-control"
-														placeholder="Write your review details..."></textarea>
+														placeholder="Write your review details..." required></textarea>
 												</div>
 												<div class="form-group mb-0">
 													<input type="submit" value="Leave Your Review"
@@ -453,21 +423,10 @@
 					window.location = 'add_to_cart?picture_id='+ ${picture.pictureId};
 				});
 				
-				$("#reviewForm").validate({
-					rules: {
-						headline: "required",
-						comment: "required",
-					},
-
-					messages: {
-						headline: "Please enter headline!",
-						comment: "Please enter review details!",
-					}
-				});
-
 				$("#rateYo").rateYo({
 					starWidth: "20px",
 					fullStar: true,
+					rating: 5.0,
 					onSet: function(rating, rateYoInstance) {
 						$("#rating").val(rating);
 					},

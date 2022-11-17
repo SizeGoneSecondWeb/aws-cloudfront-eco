@@ -184,23 +184,23 @@
 							<div class="row">
 								<div class="col-md-6 form-group">
 									<label><b>Recipient Name</b></label> <input name="recipientName"
-										class="form-control" type="text" value="${loggedCustomer.fullname}">
+										class="form-control" type="text" value="${loggedCustomer.fullname}" required>
 								</div>
 								<div class="col-md-6 form-group">
 									<label><b>Recipient Phone</b></label> <input name="recipientPhone"
-										class="form-control" type="text" value="${loggedCustomer.phone}">
+										class="form-control" type="text" value="${loggedCustomer.phone}" required>
 								</div>
 								<div class="col-md-6 form-group">
 									<label><b>Street Address</b></label> <input name="address"
-										class="form-control" type="text" value="${loggedCustomer.address}">
+										class="form-control" type="text" value="${loggedCustomer.address}" required>
 								</div>
 								<div class="col-md-6 form-group">
 									<label><b>Country</b></label> <input class="form-control"
-										name ="country" type="text" value="${loggedCustomer.country}">
+										name ="country" type="text" value="${loggedCustomer.country}" required>
 								</div>
 								<div class="col-md-6 form-group">
 									<label><b>City</b></label> <input class="form-control"
-										name ="city" type="text" value="${loggedCustomer.city}">
+										name ="city" type="text" value="${loggedCustomer.city}" required>
 								</div>
 							</div>
 						</div>
@@ -218,9 +218,9 @@
 								</div>
 								<div class="form-group mb-4">
 									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input"
+										<input type="radio" class="custom-control-input" checked="checked"
 											name="payment" id="cashondelivery" value="Cash On Delivery"> <label
-											class="custom-control-label" for="cashondelivery">Cash 
+											class="custom-control-label" for="cashondelivery" >Cash 
 											On Delivery</label>
 									</div>
 								</div>
@@ -268,29 +268,6 @@
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$("#orderForm").validate({
-						rules : {
-							recipientName: "required",
-							recipientPhone: "required",
-							address: "required",
-							country: "required",
-							city: "required",
-						},
-
-						messages : {
-							recipientName: "Please enter recipient name",
-							recipientPhone: "Please enter recipient phone",
-							address: "Please enter address",
-							country: "Please enter country",
-							city: "Please enter city",
-						}
-					});
-				});
-	</script>
 </body>
 
 </html>

@@ -141,7 +141,7 @@
 											<td class="align-middle">${order.orderId}</td>
 											<td class="align-middle">${order.pictureCopies}</td>
 											<td class="align-middle"><fmt:formatNumber
-													value="${order.total}" type="currency" currencySymbol="$" /></td>
+													value="${order.total + 10}" type="currency" currencySymbol="$" /></td>
 											<td class="align-middle">${order.orderDate}</td>
 											<td class="align-middle">${order.status}</td>
 											<td class="align-middle"><a href="show_order_detail?id=${order.orderId}"
