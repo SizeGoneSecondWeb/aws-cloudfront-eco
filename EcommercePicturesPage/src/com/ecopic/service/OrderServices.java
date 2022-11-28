@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ecopic.control.frontend.order.SendMail;
 import com.ecopic.control.frontend.shoppingcart.ShoppingCart;
 import com.ecopic.dao.OrderDAO;
 import com.ecopic.dao.PictureDAO;
@@ -115,6 +116,7 @@ public class OrderServices {
 		order.setTotal(shoppingCart.getTotalAmount());
 
 		orderDAO.create(order);
+		SendMail.sendMail(order);
 
 		shoppingCart.clear();
 
