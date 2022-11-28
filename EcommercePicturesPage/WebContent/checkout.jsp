@@ -209,13 +209,13 @@
 								<span class="bg-secondary pr-3">Payment</span>
 							</h5>
 							<div class="bg-light p-30">
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input"
 											name="payment" id="paypal" value="Paypal"> <label
 											class="custom-control-label" for="paypal">Paypal</label>
 									</div>
-								</div>
+								</div> -->
 								<div class="form-group mb-4">
 									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" checked="checked"
@@ -230,7 +230,7 @@
 										class="btn btn-block btn-primary font-weight-bold my-3 py-3">Place
 										Order</button>
 									&nbsp;
-									<a 	href="${pageContext.request.contextPath}/"
+									<a 	href="${pageContext.request.contextPath}/home"
 										class="btn btn-block btn-primary font-weight-bold my-3 py-3">Continue
 										Shopping</a>
 								</div>

@@ -54,7 +54,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="https://homepageapplvl.herokuapp.com/"><i class="fa fa-angle-right mr-2"></i>HomePage</a>
+                            <a class="text-secondary mb-2" href="https://homepagelvlshop.herokuapp.com/"><i class="fa fa-angle-right mr-2"></i>HomePage</a>
                             <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Favorite Products</a>
                             <a class="text-secondary mb-2" href="view_profile"><i class="fa fa-angle-right mr-2"></i>Profile</a>
                         </div>
@@ -88,7 +88,7 @@
                     by
                     <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
                     and re-edited by 
-                    <a class="text-primary" href="https://homepageapplvl.herokuapp.com/">Team Web LVL</a>
+                    <a class="text-primary" href="https://homepagelvlshop.herokuapp.com/">Team Web LVL</a>
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">

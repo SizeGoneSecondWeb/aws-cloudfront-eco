@@ -185,18 +185,18 @@ public class PictureService {
 		
 		if (request.getParameter("id") != null) {
 			categoryId = Integer.parseInt(request.getParameter("id"));
-			lisPictures = pictureDAO.listByCategory(categoryId, 6, offset * 6);
+			lisPictures = pictureDAO.listByCategory(categoryId, 8, offset * 8);
 			category = categoryDAO.get(categoryId);
 			request.setAttribute("category", category);
 			request.setAttribute("currentId", categoryId);
-			countPictures = pictureDAO.countByCategory(categoryId)/6;
-			if (pictureDAO.countByCategory(categoryId)%6 != 0) {
+			countPictures = pictureDAO.countByCategory(categoryId)/8;
+			if (pictureDAO.countByCategory(categoryId)%8 != 0) {
 				countPictures++;
 			}
 		} else {
-			lisPictures = pictureDAO.listOffsetPictures(6, offset * 6);
-			countPictures = pictureDAO.count()/6;
-			if (pictureDAO.count()%6 != 0) {
+			lisPictures = pictureDAO.listOffsetPictures(8, offset * 8);
+			countPictures = pictureDAO.count()/8;
+			if (pictureDAO.count()%8 != 0) {
 				countPictures++;
 			}
 		}

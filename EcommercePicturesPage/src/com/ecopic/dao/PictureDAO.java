@@ -2,12 +2,9 @@ package com.ecopic.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.ecopic.entity.Picture;
-import com.ecopic.entity.Users;
 
 public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 
@@ -62,7 +59,7 @@ public class PictureDAO extends JpaDAO<Picture> implements GenericDAO<Picture> {
 	}
 	
 	public List<Picture> listNewPictures(){
-		return super.findWithNamedQuery("Picture.listNew", 0, 4);
+		return super.findWithNamedQuery("Picture.listNew", 0, 8);
 	}
 	
 	public List<Picture> listOffsetPictures(int step, int current){

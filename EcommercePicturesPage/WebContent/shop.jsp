@@ -121,7 +121,7 @@
 					</c:if>
 					<c:if test="${fn:length(lisPictures) > 0 }">
 						<c:forEach items="${lisPictures}" var="pic">
-							<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+							<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
 								<div class="product-item bg-light mb-4">
 									<div class="product-img position-relative overflow-hidden">
 										<a href="view_picture?id=${pic.pictureId}"> <img
@@ -142,9 +142,6 @@
 										<div
 											class="d-flex align-items-center justify-content-center mt-2">
 											<h5>$${pic.price}</h5>
-											<h6 class="text-muted ml-2">
-												<del>$${pic.price + 10.0}</del>
-											</h6>
 										</div>
 										<div class="text-primary mr-2">
 											<c:forTokens items="${pic.ratingStars}" delims="," var="star">
@@ -172,13 +169,11 @@
 							<ul class="pagination justify-content-center">
 								<c:if test="${currentPage gt 1}">
 									<li class="page-item"><a type="number" class="page-link"
-									href="view_category?id=${currentId}&offset=${currentPage-1}">Previous</span></a></li>
+									href="view_category?id=${currentId}&offset=${currentPage-1}">Previous</a></li>
 									<input type="hidden" name="offset" value="${currentPage-1}">
 								</c:if>
 								<c:if test="${currentPage le 1 }">
-									<li class="page-item disabled"><a type="number" class="page-link"
-									href="view_category?id=${currentId}&offset=${currentPage-1}">Previous</span></a></li>
-									<input type="hidden" name="offset" value="${currentPage-1}">
+									<li class="page-item disabled"><a type="number" class="page-link">Previous</a></li>
 								</c:if>
 								<c:forEach begin="1" end="${countPictures}" var="offset">
 								<c:if test="${currentPage eq offset}">
@@ -192,13 +187,11 @@
 								</c:forEach>
 								<c:if test="${currentPage lt countPictures}">
 									<li class="page-item"><a type="number" class="page-link"
-									href="view_category?id=${currentId}&offset=${currentPage+1}">Next</span></a></li>
+									href="view_category?id=${currentId}&offset=${currentPage+1}">Next</a></li>
 									<input type="hidden" name="offset" value="${currentPage+1}">
 								</c:if>
 								<c:if test="${currentPage ge countPictures }">
-									<li class="page-item disabled"><a type="number" class="page-link"
-									href="view_category?id=${currentId}&offset=${currentPage+1}">Next</span></a></li>
-									<input type="hidden" name="offset" value="${currentPage+1}">
+									<li class="page-item disabled"><a type="number" class="page-link">Next</a></li>
 								</c:if>
 							</ul>
 							</c:if>
@@ -210,9 +203,7 @@
 									<input type="hidden" name="offset" value="${currentPage-1}">
 								</c:if>
 								<c:if test="${currentPage le 1 }">
-									<li class="page-item disabled"><a type="number" class="page-link"
-									href="view_category?offset=${currentPage-1}">Previous</span></a></li>
-									<input type="hidden" name="offset" value="${currentPage-1}">
+									<li class="page-item disabled"><a type="number" class="page-link">Previous</a></li>
 								</c:if>
 								<c:forEach begin="1" end="${countPictures}" var="offset">
 								<c:if test="${currentPage eq offset}">
@@ -226,13 +217,11 @@
 								</c:forEach>
 								<c:if test="${currentPage lt countPictures}">
 									<li class="page-item"><a type="number" class="page-link"
-									href="view_category?offset=${currentPage+1}">Next</span></a></li>
+									href="view_category?offset=${currentPage+1}">Next</a></li>
 									<input type="hidden" name="offset" value="${currentPage+1}">
 								</c:if>
 								<c:if test="${currentPage ge countPictures }">
-									<li class="page-item disabled"><a type="number" class="page-link"
-									href="view_category?offset=${currentPage+1}">Next</span></a></li>
-									<input type="hidden" name="offset" value="${currentPage+1}">
+									<li class="page-item disabled"><a type="number" class="page-link">Next</a></li>
 								</c:if>
 							</ul>
 							</c:if>

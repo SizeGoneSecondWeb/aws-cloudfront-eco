@@ -54,7 +54,7 @@ a:hover {
 			<div class="col-lg-6 d-none d-lg-block">
 				<div class="d-inline-flex align-items-center h-100">
 					<a class="text-body mr-3"
-						href="https://homepageapplvl.herokuapp.com/">About</a>
+						href="https://homepagelvlshop.herokuapp.com/">About</a>
 					<a class="text-body mr-3" href="${pageContext.request.contextPath}/admin/">Admin Page</a>
 					<a class="text-body mr-3" href="contact.jsp">Help</a> <a
 						class="text-body mr-3" href="faq.jsp">FAQs</a>
@@ -123,7 +123,7 @@ a:hover {
 		<div
 			class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
 			<div class="col-lg-4">
-				<a href="${pageContext.request.contextPath}"
+				<a href="${pageContext.request.contextPath}/home"
 					class="text-decoration-none"> <span
 					class="h1 text-uppercase text-primary bg-dark px-2">Pictures</span>
 					<span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>

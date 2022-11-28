@@ -192,7 +192,7 @@
 															<option value="${order.paymentMethod}" selected="selected">${order.paymentMethod}</option>
 															<option value="Cash On Delivery">Cash On
 																Delivery</option>
-															<option value="Paypal">Paypal</option>
+															<!-- <option value="Paypal">Paypal</option> -->
 													</select></td>
 												</tr>
 												<tr>

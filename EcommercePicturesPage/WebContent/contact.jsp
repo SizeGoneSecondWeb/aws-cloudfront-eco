@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<jsp:include page="Header.jsp" />
+<jsp:include page="Header.jsp" />
 </head>
 
 <body>
@@ -59,10 +59,10 @@
 					<div class="collapse navbar-collapse justify-content-between"
 						id="navbarCollapse" action="Header.html">
 						<div class="navbar-nav mr-auto py-0">
-							<a href="home" class="nav-item nav-link" id="home">Home</a>
-							<a href="view_category" class="nav-item nav-link" id="shop">Shop</a> <a
-								href="view_picture?id=2" class="nav-item nav-link" id="shop_detail">Shop
-								Detail</a>
+							<a href="home" class="nav-item nav-link" id="home">Home</a> <a
+								href="view_category" class="nav-item nav-link" id="shop">Shop</a>
+							<a href="view_picture?id=2" class="nav-item nav-link"
+								id="shop_detail">Shop Detail</a>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle"
 									data-toggle="dropdown" id="page">Pages <i
@@ -112,61 +112,24 @@
 			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
 			<span class="bg-secondary pr-3">Contact Us</span>
 		</h2>
-		<div class="row px-xl-5">
-			<div class="col-lg-7 mb-5">
-				<div class="contact-form bg-light p-30">
-					<div id="success"></div>
-					<form name="sentMessage" id="contactForm" novalidate="novalidate">
-						<div class="control-group">
-							<input type="text" class="form-control" id="name"
-								placeholder="Your Name" required="required"
-								data-validation-required-message="Please enter your name" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<input type="email" class="form-control" id="email"
-								placeholder="Your Email" required="required"
-								data-validation-required-message="Please enter your email" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<input type="text" class="form-control" id="subject"
-								placeholder="Subject" required="required"
-								data-validation-required-message="Please enter a subject" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<textarea class="form-control" rows="8" id="message"
-								placeholder="Message" required="required"
-								data-validation-required-message="Please enter your message"></textarea>
-							<p class="help-block text-danger"></p>
-						</div>
-						<div>
-							<button class="btn btn-primary py-2 px-4" type="submit"
-								id="sendMessageButton">Send Message</button>
-						</div>
-					</form>
-				</div>
+		<div align="center" style="margin-left: 10%;margin-right: 10%;">
+			<div class="bg-light p-30 mb-30">
+				<iframe style="width: 100%; height: 250px;"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.484300946451!2d106.76972825028096!3d10.850721392233206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752763f23816ab%3A0x282f711441b6916f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBUcC4gSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1663732784826!5m2!1svi!2s"
+					frameborder="0" style="border:0;" allowfullscreen=""
+					aria-hidden="false" tabindex="0"></iframe>
 			</div>
-			<div class="col-lg-5 mb-5">
-				<div class="bg-light p-30 mb-30">
-					<iframe style="width: 100%; height: 250px;"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.484300946451!2d106.76972825028096!3d10.850721392233206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752763f23816ab%3A0x282f711441b6916f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBUcC4gSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1663732784826!5m2!1svi!2s"
-						frameborder="0" style="border:0;" allowfullscreen=""
-						aria-hidden="false" tabindex="0"></iframe>
-				</div>
-				<div class="bg-light p-30 mb-3">
-					<p class="mb-2">
-						<i class="fa fa-map-marker-alt text-primary mr-3"></i>1 Đ. Võ Văn
-						Ngân, Linh Chiểu, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh
-					</p>
-					<p class="mb-2">
-						<i class="fa fa-envelope text-primary mr-3"></i>20110517@student.hcmute.edu.vn
-					</p>
-					<p class="mb-2">
-						<i class="fa fa-phone-alt text-primary mr-3"></i>+84 943 602 574
-					</p>
-				</div>
+			<div class="bg-light p-30 mb-3">
+				<p class="mb-2">
+					<i class="fa fa-map-marker-alt text-primary mr-3"></i>1 Đ. Võ Văn
+					Ngân, Linh Chiểu, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh
+				</p>
+				<p class="mb-2">
+					<i class="fa fa-envelope text-primary mr-3"></i>20110517@student.hcmute.edu.vn
+				</p>
+				<p class="mb-2">
+					<i class="fa fa-phone-alt text-primary mr-3"></i>+84 943 602 574
+				</p>
 			</div>
 		</div>
 	</div>

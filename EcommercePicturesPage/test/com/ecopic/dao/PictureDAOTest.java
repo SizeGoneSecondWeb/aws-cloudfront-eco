@@ -164,7 +164,7 @@ public class PictureDAOTest{
 	@Test
 	public void testListByCategory() {
 		int categoryId =6;
-		List<Picture> pictures = pictureDAO.listByCategory(categoryId);
+		List<Picture> pictures = pictureDAO.listByCategory(categoryId,6,6);
 		
 		assertTrue(pictures.size()>0);
 	}

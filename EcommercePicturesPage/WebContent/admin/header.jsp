@@ -22,7 +22,7 @@
 			<i class="fa fa-bars"></i>
 		</button>
 
-		<a href="${pageContext.request.contextPath}" class="btn btn-success"><i
+		<a href="${pageContext.request.contextPath}/home" class="btn btn-success"><i
 			class="material-icons">&#xE151;</i> <span>Go to the sales page</span></a>
 
 		<!-- Topbar Navbar -->
