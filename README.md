@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![HOME PAGE][product-screenshot]](http://ecommercepicturespage.herokuapp.com/)
+[![HOME PAGE][product-screenshot]](http://demoappwebshop-env.us-east-1.elasticbeanstalk.com/)
 ### Thành viên nhóm
 | Họ và tên     | Mã số sinh viên |
 | :---          |     :---:       |
