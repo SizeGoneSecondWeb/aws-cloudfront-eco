@@ -84,10 +84,13 @@ public class UserServices {
 
 	public void deleteUser() throws ServletException, IOException {
 		int userID = Integer.parseInt(request.getParameter("idd")) ;
-		
-		userDAO.delete(userID);
-		
-		String message = "User has been delete successfully!";
+		String message="";
+		if(userID == 23) {
+			message ="The default admin user account cannot be deleted!";
+		}else {
+			userDAO.delete(userID);
+			message = "User has been delete successfully!";
+		}
 		listUser(message);
 	}
 	

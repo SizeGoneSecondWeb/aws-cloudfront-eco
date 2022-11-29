@@ -159,12 +159,19 @@ public class PictureService {
 
 	public void deletePicture() throws ServletException, IOException {
 		Integer pictureId = Integer.parseInt(request.getParameter("idd"));
-
-		pictureDAO.delete(pictureId);
-
-		String message = "The picture (ID: %d) has been deleted successfully!";
-		message = String.format(message, pictureId);
-
+		String message ="";
+		Picture picture = pictureDAO.get(pictureId);
+		if(picture.getOderDetails() != null) {
+			message = "Could not delete the picture with ID [%d] because there are orders associated with it!";
+			message = String.format(message, pictureId);
+		}else if(picture.getReviews() != null) {
+			message = "Could not delete the picture with ID [%d] because it has reviews!";
+			message = String.format(message, pictureId);
+		}else {
+			pictureDAO.delete(pictureId);
+			message = "The picture (ID: %d) has been deleted successfully!";
+			message = String.format(message, pictureId);
+		}
 		listPictures(message);
 	}
 

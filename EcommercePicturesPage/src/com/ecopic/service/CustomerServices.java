@@ -146,9 +146,18 @@ public class CustomerServices {
 
 	public void deleteCustomer() throws ServletException, IOException {
 		Integer customerId = Integer.parseInt(request.getParameter("idd"));
-		customerDAO.delete(customerId);
-
-		String message = "The customer has been deleted successfully!";
+		String message ="";
+		Customer customer = customerDAO.get(customerId);
+		if(customer.getPictureOders() != null) {
+			message = "Could not delete the customer with ID [%d] because he/she placed orders!";
+			message = String.format(message, customerId);
+		}else if(customer.getReviews() != null) {
+			message = "Could not delete the customer with ID [%d] because he/she posted reviews!";
+			message = String.format(message, customerId);
+		}else {
+			customerDAO.delete(customerId);
+			message = "The customer has been deleted successfully!";
+		}
 		listCustomers(message);
 	}
 
