@@ -159,7 +159,7 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
 	public Set<Review> getReviews() {
 		return this.reviews;
 	}
@@ -168,7 +168,7 @@ public class Customer implements java.io.Serializable {
 		this.reviews = reviews;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
 	public Set<PictureOrder> getPictureOders() {
 		return this.pictureOders;
 	}

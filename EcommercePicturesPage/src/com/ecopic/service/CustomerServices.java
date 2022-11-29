@@ -148,10 +148,10 @@ public class CustomerServices {
 		Integer customerId = Integer.parseInt(request.getParameter("idd"));
 		String message ="";
 		Customer customer = customerDAO.get(customerId);
-		if(customer.getPictureOders() != null) {
+		if(customer.getPictureOders().size()>0) {
 			message = "Could not delete the customer with ID [%d] because he/she placed orders!";
 			message = String.format(message, customerId);
-		}else if(customer.getReviews() != null) {
+		}else if(customer.getReviews().size()>0) {
 			message = "Could not delete the customer with ID [%d] because he/she posted reviews!";
 			message = String.format(message, customerId);
 		}else {

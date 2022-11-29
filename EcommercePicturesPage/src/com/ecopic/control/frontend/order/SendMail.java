@@ -130,7 +130,7 @@ public class SendMail {
 					+ "                  <td align=\"left\" bgcolor=\"#74c99a\" width=\"8%\" style=\"padding: 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;\"><strong>Quantity</strong></td>\r\n"
 					+ "                  <td align=\"left\" bgcolor=\"#74c99a\" width=\"8%\" style=\"padding: 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;\"><strong>Total</strong></td>\r\n"
 					+ "                </tr>" + table + "  <tr>\r\n"
-					+ "                  <td align=\"left\" width=\"38%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong></strong></td>\r\n"
+					+ "                  <td align=\"left\" width=\"38%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong>Total All</strong></td>\r\n"
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong></strong></td>\r\n"
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong></strong></td>\r\n"
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong>"
@@ -140,10 +140,7 @@ public class SendMail {
 					+ "</html>", "text/html;charset=UTF-8");
 //            
 
-			System.out.println("sending...");
-			// Send message
 			Transport.send(message);
-			System.out.println("Sent message successfully....");
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}

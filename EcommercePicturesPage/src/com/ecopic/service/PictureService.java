@@ -161,10 +161,10 @@ public class PictureService {
 		Integer pictureId = Integer.parseInt(request.getParameter("idd"));
 		String message ="";
 		Picture picture = pictureDAO.get(pictureId);
-		if(picture.getOderDetails() != null) {
+		if(picture.getOderDetails().size()>0) {
 			message = "Could not delete the picture with ID [%d] because there are orders associated with it!";
 			message = String.format(message, pictureId);
-		}else if(picture.getReviews() != null) {
+		}else if(picture.getReviews().size()>0) {
 			message = "Could not delete the picture with ID [%d] because it has reviews!";
 			message = String.format(message, pictureId);
 		}else {

@@ -216,7 +216,7 @@ public class Picture implements java.io.Serializable {
 		this.reviews = reviews;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "picture")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "picture")
 	public Set<OrderDetail> getOderDetails() {
 		return this.oderDetails;
 	}
