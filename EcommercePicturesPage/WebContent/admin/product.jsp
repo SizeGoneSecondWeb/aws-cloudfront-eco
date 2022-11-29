@@ -214,7 +214,7 @@
 													<td style="vertical-align: middle;">${pic.category.name}</td>
 													<td style="vertical-align: middle;">$${pic.price}</td>
 													<td style="vertical-align: middle;"><fmt:formatDate
-															pattern=' hh:mm:ss - yyyy-MM-dd'
+															pattern='hh:mm:ss aa - yyyy-MM-dd'
 															value='${pic.lastUpdateTime}' /></td>
 													<td align="center"><a
 														href="edit_picture?id=${pic.pictureId}"
