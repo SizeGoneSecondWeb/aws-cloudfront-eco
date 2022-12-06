@@ -175,9 +175,14 @@
 												value="${customer.email}" required>
 										</div>
 										<div class="form-group">
-											<label>Full name</label> <input type="text" id="fullName"
-												name="fullName" class="form-control" 
-												value="${customer.fullname}" required>
+											<label>First name</label> <input type="text" id="firstName"
+												name="firstName" class="form-control" 
+												value="${customer.firstname}" required>
+										</div>
+										<div class="form-group">
+											<label>Last name</label> <input type="text" id="lastName"
+												name="lastName" class="form-control" 
+												value="${customer.lastname}" required>
 										</div>
 										<div class="form-group">
 											<label>Password</label> <input type="password" id="password"
@@ -190,18 +195,27 @@
 												class="form-control" value="${customer.password}" required>
 										</div>
 										<div class="form-group">
-											<label>Phone numer</label> <input type="text" id="phone"
+											<label>Phone number</label> <input type="text" id="phone"
 												name="phone" class="form-control" 
 												value="${customer.phone}" required>
 										</div>
 										<div class="form-group">
-											<label>Address</label> <input type="text" id="address"
-												name="address" class="form-control" 
-												value="${customer.address}" required>
+											<label>Address Line 1</label> <input type="text" id="address1"
+												name="address1" class="form-control" 
+												value="${customer.addressLine1}" required>
+										</div>
+										<div class="form-group">
+											<label>Address Line 2</label> <input type="text" id="address2"
+												name="address2" class="form-control" 
+												value="${customer.addressLine2}" required>
 										</div>
 										<div class="form-group">
 											<label>City</label> <input type="text" id="city" name="city"
 												class="form-control" value="${customer.city}" required>
+										</div>
+										<div class="form-group">
+											<label>State</label> <input type="text" id="state" name="state"
+												class="form-control" value="${customer.state}" required>
 										</div>
 										<div class="form-group">
 											<label>Country</label> <input type="text" id="country"

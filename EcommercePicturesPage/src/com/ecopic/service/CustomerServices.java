@@ -45,20 +45,26 @@ public class CustomerServices {
 	}
 
 	private void updateCustomerFieldsFromForm(Customer customer) {
-		String fullName = request.getParameter("fullName");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String phone = request.getParameter("phone");
-		String address = request.getParameter("address");
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
 		String city = request.getParameter("city");
+		String state = request.getParameter("state");
 		String country = request.getParameter("country");
 
 		customer.setEmail(email);
-		customer.setFullname(fullName);
+		customer.setFirstname(firstName);
+		customer.setLastname(lastName);
 		customer.setPassword(password);
 		customer.setPhone(phone);
-		customer.setAddress(address);
+		customer.setAddressLine1(address1);
+		customer.setAddressLine2(address2);
 		customer.setCity(city);
+		customer.setState(state);
 		customer.setCountry(country);
 	}
 
@@ -212,4 +218,5 @@ public class CustomerServices {
 		customerDAO.update(customer);
 		showCustomerProfile();
 	}
+
 }

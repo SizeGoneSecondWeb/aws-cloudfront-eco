@@ -13,6 +13,7 @@
 	<link href="css/thanks-style.css" rel="stylesheet">
 </head>
 <body>
+	<jsp:include page="Header.jsp" />
 	<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 94.09">
 	<defs>
     <style>

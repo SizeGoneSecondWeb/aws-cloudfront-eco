@@ -21,6 +21,9 @@ import com.ecopic.entity.Customer;
 import com.ecopic.entity.OrderDetail;
 import com.ecopic.entity.Picture;
 import com.ecopic.entity.PictureOrder;
+import com.paypal.api.payments.ItemList;
+import com.paypal.api.payments.Payment;
+import com.paypal.api.payments.ShippingAddress;
 
 public class OrderServices {
 
@@ -67,24 +70,89 @@ public class OrderServices {
 	}
 
 	public void showCheckoutForm() throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+		
+		//tax is 10% of subtotal
+		float tax = shoppingCart.getTotalAmount() * 0.1f;
+		
+		//shipping fee is 1.0 USD per copy
+		float shippingFee = shoppingCart.getTotalQuantity()* 1.0f;
+		
+		float total = shoppingCart.getTotalAmount() + tax + shippingFee;
+		
+		session.setAttribute("tax", tax);
+		session.setAttribute("shippingFee", shippingFee);
+		session.setAttribute("total", total);
+		
 		String checkoutPage = "checkout.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(checkoutPage);
 		dispatcher.forward(request, response);
 	}
 
 	public void placeOrder() throws ServletException, IOException {
-		String recipientName = request.getParameter("recipientName");
-		String recipientPhone = request.getParameter("recipientPhone");
-		String address = request.getParameter("address");
+		String paymentMethod = request.getParameter("payment");
+		PictureOrder order = readOrderInfo();
+		
+		if(paymentMethod.equals("Paypal")) {
+			 PaymentServices paymentServices = new PaymentServices(request, response);
+			 request.getSession().setAttribute("order4Paypal", order);
+			 paymentServices.authorizePayment(order);
+		}else { //Cash on Delivery
+			placeOrderCOD(order);
+		}
+	}
+	
+	public Integer placeOrderPaypal(Payment payment) {
+		PictureOrder order = (PictureOrder) request.getSession().getAttribute("order4Paypal");
+		ItemList itemList = payment.getTransactions().get(0).getItemList();
+		ShippingAddress shippingAddress = itemList.getShippingAddress();
+		String shippingPhoneNumber = itemList.getShippingPhoneNumber();
+		
+		String recipientName = shippingAddress.getRecipientName();
+		String[] names =  recipientName.split(" ");
+		order.setFirstname(names[0]);
+		order.setLastname(names[1]);
+		order.setAddressLine1(shippingAddress.getLine1());
+		order.setAddressLine2(shippingAddress.getLine2());
+		order.setCity(shippingAddress.getCity());
+		order.setState(shippingAddress.getState());
+		order.setCountry(shippingAddress.getCountryCode());
+		order.setPhone(shippingPhoneNumber);
+		
+		return saveOrderInfo(order);
+	}
+	
+	private Integer saveOrderInfo(PictureOrder order) {
+		PictureOrder savedOrder = orderDAO.create(order);
+		SendMail.sendMail(order);
+		
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
+		shoppingCart.clear();
+		
+		return savedOrder.getOrderId();
+	}
+	
+	private PictureOrder readOrderInfo() {
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String phone = request.getParameter("phone");
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
 		String country = request.getParameter("country");
 		String city = request.getParameter("city");
+		String state = request.getParameter("state");
 		String paymentMethod = request.getParameter("payment");
-		String shippingAddress = address + ", " + city + ", " + country;
-
+		
 		PictureOrder order = new PictureOrder();
-		order.setRecipientName(recipientName);
-		order.setRecipientPhone(recipientPhone);
-		order.setShippingAddress(shippingAddress);
+		order.setFirstname(firstName);
+		order.setLastname(lastName);
+		order.setPhone(phone);
+		order.setState(state);
+		order.setCity(city);
+		order.setCountry(country);
+		order.setAddressLine1(address1);
+		order.setAddressLine2(address2);
 		order.setPaymentMethod(paymentMethod);
 
 		HttpSession session = request.getSession();
@@ -113,13 +181,22 @@ public class OrderServices {
 		}
 
 		order.setOrderDetails(orderDetails);
-		order.setTotal(shoppingCart.getTotalAmount());
+		
+		float tax = (float) session.getAttribute("tax");
+		float shippingFee = (float) session.getAttribute("shippingFee");
+		float total = (float) session.getAttribute("total");
+		
+		order.setSubtotal(shoppingCart.getTotalAmount());
+		order.setTax(tax);
+		order.setShippingFee(shippingFee);
+		order.setTotal(total);
+		
+		return order;
+	}
 
-		orderDAO.create(order);
-		SendMail.sendMail(order);
-
-		shoppingCart.clear();
-
+	private void placeOrderCOD(PictureOrder order) throws ServletException, IOException {
+		saveOrderInfo(order);
+		
 		String message = "Thank you. Your order has been received!"
 				+ "We will deliver your pictures within a few days.";
 
@@ -129,6 +206,8 @@ public class OrderServices {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(checkoutPage);
 		dispatcher.forward(request, response);
 	}
+	
+	
 
 	public void listOrderByCustomer() throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -174,15 +253,31 @@ public class OrderServices {
 		HttpSession session = request.getSession();
 		PictureOrder order = (PictureOrder) session.getAttribute("order");
 		
-		String recipientName = request.getParameter("recipientName");
-		String recipientPhone = request.getParameter("recipientPhone");
-		String shippingAddress = request.getParameter("shippingAddress");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String phone = request.getParameter("phone");
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
+		String city = request.getParameter("city");
+		String country = request.getParameter("country");
+		String state = request.getParameter("state");
+		
+		float shippingFee = Float.parseFloat(request.getParameter("shippingFee"));
+		float tax = Float.parseFloat(request.getParameter("tax"));
+		
 		String paymentMethod = request.getParameter("paymentMethod");
 		String orderStatus = request.getParameter("orderStatus");
 	
-		order.setRecipientName(recipientName);
-		order.setRecipientPhone(recipientPhone);
-		order.setShippingAddress(shippingAddress);
+		order.setFirstname(firstName);
+		order.setLastname(lastName);
+		order.setPhone(phone);
+		order.setAddressLine1(address1);
+		order.setAddressLine2(address2);
+		order.setCity(city);
+		order.setState(state);
+		order.setCountry(country);
+		order.setShippingFee(shippingFee);
+		order.setTax(tax);
 		order.setPaymentMethod(paymentMethod);
 		order.setStatus(orderStatus);
 		
@@ -214,7 +309,13 @@ public class OrderServices {
 			orderDetails.add(orderDetail);
 			totalAmount +=subtotal;
 		}
+		order.setSubtotal(totalAmount);
+		
+		totalAmount += shippingFee;
+		totalAmount += tax;
+		
 		order.setTotal(totalAmount);
+		
 		orderDAO.update(order);
 		
 		String message ="The order " + order.getOrderId() + " has been updated successfully!";

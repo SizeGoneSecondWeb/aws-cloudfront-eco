@@ -38,9 +38,9 @@ public class OrderDAOTest {
 		customer.setCustomerId(21);
 		
 		order.setCustomer(customer);
-		order.setRecipientName("Bao Long");
+		order.setFirstname("Bao Long");
 		order.setRecipientPhone("1234567890");
-		order.setShippingAddress("261/15/47 Dinh Phong Phu");
+		order.setAddressLine1("261/15/47 Dinh Phong Phu");
 		
 		Set<OrderDetail> orderDetails = new HashSet<OrderDetail>();
 		OrderDetail orderDetail1 = new OrderDetail();
@@ -76,9 +76,9 @@ public class OrderDAOTest {
 		customer.setCustomerId(13);
 		
 		order.setCustomer(customer);
-		order.setRecipientName("Bao Long");
+		order.setFirstname("Bao Long");
 		order.setRecipientPhone("1234567890");
-		order.setShippingAddress("261/15/47 Dinh Phong Phu");
+		order.setAddressLine1("261/15/47 Dinh Phong Phu");
 		
 		Set<OrderDetail> orderDetails = new HashSet<OrderDetail>();
 		OrderDetail orderDetail = new OrderDetail();
@@ -102,13 +102,13 @@ public class OrderDAOTest {
 	public void testUpdatePictureOrderShippingAddress() {
 		Integer orderId = 3;
 		PictureOrder order = orderDAO.get(orderId);
-		order.setShippingAddress("New Shipping Address");
+		order.setAddressLine1("New Shipping Address");
 		
 		orderDAO.update(order);
 		
 		PictureOrder updatedOrder = orderDAO.get(orderId);
 		
-		assertEquals(order.getShippingAddress(), updatedOrder.getShippingAddress());
+		assertEquals(order.getAddressLine1(), updatedOrder.getAddressLine1());
 	}
 	
 	@Test

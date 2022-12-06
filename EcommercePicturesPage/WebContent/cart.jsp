@@ -234,16 +234,12 @@
 									currencySymbol="$" />
 							</h6>
 						</div>
-						<div class="d-flex justify-content-between">
-							<h6 class="font-weight-medium">Shipping</h6>
-							<h6 class="font-weight-medium">$10</h6>
-						</div>
 					</div>
 					<div class="pt-2">
 						<div class="d-flex justify-content-between mt-2">
 							<h5>Total</h5>
 							<h5>
-								<fmt:formatNumber value="${cart.totalAmount + 10}"
+								<fmt:formatNumber value="${cart.totalAmount}"
 									type="currency" currencySymbol="$" />
 							</h5>
 						</div>

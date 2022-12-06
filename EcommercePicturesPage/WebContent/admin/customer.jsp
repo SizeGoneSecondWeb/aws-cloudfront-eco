@@ -176,7 +176,8 @@
 												<th>Index</th>
 												<th>ID</th>
 												<th>Email</th>
-												<th>Full Name</th>
+												<th>First Name</th>
+												<th>Last Name</th>
 												<th>City</th>
 												<th>Country</th>
 												<th>Register Date</th>
@@ -188,7 +189,8 @@
 												<th>Index</th>
 												<th>ID</th>
 												<th>Email</th>
-												<th>Full Name</th>
+												<th>First Name</th>
+												<th>Last Name</th>
 												<th>City</th>
 												<th>Country</th>
 												<th>Register Date</th>
@@ -202,9 +204,10 @@
 													<td>${status.index + 1}</td>
 													<td>${customer.customerId}</td>
 													<td>${customer.email}</td>
-													<td>${customer.fullname}</td>
+													<td>${customer.firstname}</td>
+													<td>${customer.lastname}</td>
 													<td>${customer.city}</td>
-													<td>${customer.country}</td>
+													<td>${customer.countryName}</td>
 													<td>${customer.registerDate}</td>
 													<td align="center"><a
 														href="edit_customer?id=${customer.customerId}"
@@ -272,8 +275,12 @@
 											name="email" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label>Full name</label> <input type="text" id="fullName"
-											name="fullName" class="form-control" required>
+										<label>First name</label> <input type="text" id="firstName"
+											name="firstName" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label>Last name</label> <input type="text" id="lastName"
+											name="lastName" class="form-control" required>
 									</div>
 									<div class="form-group">
 										<label>Password</label> <input type="password" id="password"
@@ -289,11 +296,19 @@
 											name="phone" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label>Address</label> <input type="text" id="address"
-											name="address" class="form-control" required>
+										<label>Address Line 1</label> <input type="text" id="address1"
+											name="address1" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label>Address Line 2</label> <input type="text" id="address2"
+											name="address2" class="form-control" required>
 									</div>
 									<div class="form-group">
 										<label>City</label> <input type="text" id="city" name="city"
+											class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label>State</label> <input type="text" id="state" name="state"
 											class="form-control" required>
 									</div>
 									<div class="form-group">

@@ -134,7 +134,7 @@ public class SendMail {
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong></strong></td>\r\n"
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong></strong></td>\r\n"
 					+ "                  <td align=\"left\" width=\"8%\" style=\"padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #74c99a; border-bottom: 2px dashed #74c99a;\"><strong>"
-					+ order.getTotal() + "$</strong></td>\r\n" + "                </tr>\r\n"
+					+ order.getSubtotal() + "$</strong></td>\r\n" + "                </tr>\r\n"
 					+ "              </table>\r\n" + "            </td>\r\n" + "          </tr>\r\n"
 					+ "        </table>\r\n" + "      </td>\r\n" + "    </tr>\r\n" + "  </table>\r\n" + "</body>\r\n"
 					+ "</html>", "text/html;charset=UTF-8");

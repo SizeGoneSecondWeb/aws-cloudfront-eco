@@ -155,14 +155,28 @@
 												currencySymbol="$" /></td>
 									</tr>
 								</c:forEach>
-								<tr >
-									<th colspan="5" align="right">Shipping fee</th>
-									<td align="center">$10</td>
+								<tr align="center">
+									<th style="vertical-align: middle;" colspan="5" align="right">SUB
+										TOTAL</th>
+									<td style="vertical-align: middle;"><fmt:formatNumber
+											value="${cart.totalAmount}" type="currency" currencySymbol="$" /></td>
+								</tr>
+								<tr align="center">
+									<th style="vertical-align: middle;" colspan="5" align="right">TAX</th>
+									<td style="vertical-align: middle;"><fmt:formatNumber
+											value="${tax}" type="currency" currencySymbol="$" /></td>
+								</tr>
+								<tr align="center">
+									<th style="vertical-align: middle;" colspan="5" align="right">SHIPPING
+										FEE</th>
+									<td style="vertical-align: middle;"><fmt:formatNumber
+											value="${shippingFee}" type="currency"
+											currencySymbol="$" /></td>
 								</tr>
 								<tr align="center">
 									<th colspan="4" align="right">TOTAL</th>
 									<td>${cart.totalQuantity}</td>
-									<td><fmt:formatNumber value="${cart.totalAmount + 10}"
+									<td><fmt:formatNumber value="${total}"
 											type="currency" currencySymbol="$" /></td>
 								</tr>
 							</tbody>
@@ -183,24 +197,44 @@
 						<div class="bg-light p-30 mb-5">
 							<div class="row">
 								<div class="col-md-6 form-group">
-									<label><b>Recipient Name</b></label> <input name="recipientName"
-										class="form-control" type="text" value="${loggedCustomer.fullname}" required>
+									<label><b>First Name</b></label> <input
+										name="firstName" class="form-control" type="text"
+										value="${loggedCustomer.firstname}" required>
 								</div>
 								<div class="col-md-6 form-group">
-									<label><b>Recipient Phone</b></label> <input name="recipientPhone"
-										class="form-control" type="text" value="${loggedCustomer.phone}" required>
+									<label><b>Last Name</b></label> <input
+										name="lastName" class="form-control" type="text"
+										value="${loggedCustomer.lastname}" required>
 								</div>
 								<div class="col-md-6 form-group">
-									<label><b>Street Address</b></label> <input name="address"
-										class="form-control" type="text" value="${loggedCustomer.address}" required>
+									<label><b>Recipient Phone</b></label> <input
+										name="phone" class="form-control" type="text"
+										value="${loggedCustomer.phone}" required>
 								</div>
 								<div class="col-md-6 form-group">
-									<label><b>Country</b></label> <input class="form-control"
-										name ="country" type="text" value="${loggedCustomer.country}" required>
+									<label><b>Street Address Line 1</b></label> <input name="address1"
+										class="form-control" type="text"
+										value="${loggedCustomer.addressLine1}" required>
+								</div>
+								<div class="col-md-6 form-group">
+									<label><b>Street Address Line 2</b></label> <input name="address2"
+										class="form-control" type="text"
+										value="${loggedCustomer.addressLine2}" required>
 								</div>
 								<div class="col-md-6 form-group">
 									<label><b>City</b></label> <input class="form-control"
-										name ="city" type="text" value="${loggedCustomer.city}" required>
+										name="city" type="text" value="${loggedCustomer.city}"
+										required>
+								</div>
+								<div class="col-md-6 form-group">
+									<label><b>State</b></label> <input class="form-control"
+										name="state" type="text" value="${loggedCustomer.state}"
+										required>
+								</div>
+								<div class="col-md-6 form-group">
+									<label><b>Country</b></label> <input class="form-control"
+										name="country" type="text" value="${loggedCustomer.country}"
+										required>
 								</div>
 							</div>
 						</div>
@@ -209,18 +243,19 @@
 								<span class="bg-secondary pr-3">Payment</span>
 							</h5>
 							<div class="bg-light p-30">
-								<!-- <div class="form-group">
+								<div class="form-group">
 									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input"
 											name="payment" id="paypal" value="Paypal"> <label
 											class="custom-control-label" for="paypal">Paypal</label>
 									</div>
-								</div> -->
+								</div>
 								<div class="form-group mb-4">
 									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" checked="checked"
-											name="payment" id="cashondelivery" value="Cash On Delivery"> <label
-											class="custom-control-label" for="cashondelivery" >Cash 
+										<input type="radio" class="custom-control-input"
+											checked="checked" name="payment" id="cashondelivery"
+											value="Cash On Delivery"> <label
+											class="custom-control-label" for="cashondelivery">Cash
 											On Delivery</label>
 									</div>
 								</div>
@@ -229,8 +264,7 @@
 									<button type="submit"
 										class="btn btn-block btn-primary font-weight-bold my-3 py-3">Place
 										Order</button>
-									&nbsp;
-									<a 	href="${pageContext.request.contextPath}/home"
+									&nbsp; <a href="${pageContext.request.contextPath}/home"
 										class="btn btn-block btn-primary font-weight-bold my-3 py-3">Continue
 										Shopping</a>
 								</div>

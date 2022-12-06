@@ -142,9 +142,14 @@
 											required>
 									</div>
 									<div class="form-group">
-										<label>Full name</label> <input type="text" id="fullName"
-											name="fullName" class="form-control"
-											value="${loggedCustomer.fullname}" required>
+										<label>First name</label> <input type="text" id="firstName"
+											name="firstName" class="form-control"
+											value="${loggedCustomer.firstname}" required>
+									</div>
+									<div class="form-group">
+										<label>Last name</label> <input type="text" id="lastName"
+											name="lastName" class="form-control"
+											value="${loggedCustomer.lastname}" required>
 									</div>
 									<div class="form-group">
 										<label>Password</label> <input type="password" id="password"
@@ -162,13 +167,22 @@
 											required>
 									</div>
 									<div class="form-group">
-										<label>Address</label> <input type="text" id="address"
-											name="address" class="form-control"
-											value="${loggedCustomer.address}" required>
+										<label>Address Line 1</label> <input type="text" id="address1"
+											name="address1" class="form-control"
+											value="${loggedCustomer.addressLine1}" required>
+									</div>
+									<div class="form-group">
+										<label>Address Line 2</label> <input type="text" id="address2"
+											name="address2" class="form-control"
+											value="${loggedCustomer.addressLine2}" required>
 									</div>
 									<div class="form-group">
 										<label>City</label> <input type="text" id="city" name="city"
 											class="form-control" value="${loggedCustomer.city}" required>
+									</div>
+									<div class="form-group">
+										<label>State</label> <input type="text" id="state" name="state"
+											class="form-control" value="${loggedCustomer.state}" required>
 									</div>
 									<div class="form-group">
 										<label>Country</label> <input type="text" id="country"

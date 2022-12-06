@@ -33,7 +33,7 @@ public class CustomerDAOTest {
 	public void testCreateCustomer() {
 		Customer customer = new Customer();
 		customer.setEmail("user11@gmail.com");
-		customer.setFullname("Mai Bảo Long");
+		customer.setFirstname("Mai Bảo Long");
 		customer.setCity("Ho Chi Minh");
 		customer.setCountry("Viet Nam");
 		customer.setAddress("261/15/47 Dinh Phong Phu, Tang Nhon Phu B");
@@ -56,7 +56,7 @@ public class CustomerDAOTest {
 	public void testUpdateCustomer() {
 		Customer customer = customerDAO.get(1);
 		String fullName = "Desyurin";
-		customer.setFullname(fullName);
+		customer.setFirstname(fullName);
 		
 		Customer updateCustomer = customerDAO.update(customer);
 		

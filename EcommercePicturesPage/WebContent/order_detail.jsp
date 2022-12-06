@@ -121,10 +121,14 @@
 				<div class="col-lg-12">
 					<h5 class="section-title position-relative text-uppercase mb-3">
 						<span class="bg-secondary pr-3">View Order's information
-							(ID:${order.orderId})</span>
+							(Order ID:${order.orderId})</span>
 					</h5>
 					<div class="bg-light p-30 mb-5">
 						<div class="row">
+							<div class="col-md-6 form-group">
+								<label><b>Order By</b></label> <input readonly="readonly"
+									class="form-control" type="text" value="${order.customer.fullname}">
+							</div>
 							<div class="col-md-6 form-group">
 								<label><b>Order Status</b></label> <input readonly="readonly"
 									class="form-control" type="text" value="${order.status}">
@@ -141,25 +145,59 @@
 								<label><b>Total Amount</b></label> <input readonly="readonly"
 									class="form-control" type="text"
 									value="<fmt:formatNumber
-													value="${order.total + 10}" type="currency" currencySymbol="$" />">
-							</div>
-							<div class="col-md-6 form-group">
-								<label><b>Recipient Name</b></label> <input readonly="readonly"
-									class="form-control" type="text" value="${order.recipientName}">
-							</div>
-							<div class="col-md-6 form-group">
-								<label><b>Recipient Phone</b></label> <input readonly="readonly"
-									class="form-control" type="text"
-									value="${order.recipientPhone}">
-							</div>
-							<div class="col-md-6 form-group">
-								<label><b>Ship To</b></label> <input readonly="readonly"
-									class="form-control" type="text"
-									value="${order.shippingAddress} ">
+													value="${order.total}" type="currency" currencySymbol="$" />">
 							</div>
 							<div class="col-md-6 form-group">
 								<label><b>Payment Method</b></label> <input readonly="readonly"
 									class="form-control" type="text" value="${order.paymentMethod}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<h5 class="section-title position-relative text-uppercase mb-3">
+						<span class="bg-secondary pr-3">View Recipient's information
+							(Customer ID:${order.customer.customerId})</span>
+					</h5>
+					<div class="bg-light p-30 mb-5">
+						<div class="row">
+							<div class="col-md-6 form-group">
+								<label><b>First Name</b></label> <input readonly="readonly"
+									class="form-control" type="text" value="${order.firstname}">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>Last Name</b></label> <input readonly="readonly"
+									class="form-control" type="text" value="${order.lastname}">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>Recipient Phone</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.phone}">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>Address Line 1</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.addressLine1} ">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>Address Line 2</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.addressLine2} ">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>City</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.city} ">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>State</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.state} ">
+							</div>
+							<div class="col-md-6 form-group">
+								<label><b>Country</b></label> <input readonly="readonly"
+									class="form-control" type="text"
+									value="${order.countryName} ">
 							</div>
 						</div>
 					</div>
@@ -203,9 +241,9 @@
 								<tr align="center">
 									<th colspan="4" align="right">TOTAL</th>
 									<td>${order.pictureCopies}</td>
-									<td><fmt:formatNumber value="${order.total + 10}"
+									<td><fmt:formatNumber value="${order.total}"
 											type="currency" currencySymbol="$" />
-										<br/>(Shipping fee included)
+										<br/>(Shipping fee and tax included)
 									</td>
 								</tr>
 							</tbody>

@@ -74,7 +74,8 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
+			<li class="nav-item"><a class="nav-link"
+				href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -170,6 +171,18 @@
 												<td style="width: 80%;">${order.customer.fullname}</td>
 											</tr>
 											<tr>
+												<th>Order Status</th>
+												<td style="width: 80%;">${order.status}</td>
+											</tr>
+											<tr>
+												<th>Order Date</th>
+												<td style="width: 80%;">${order.orderDate}</td>
+											</tr>
+											<tr>
+												<th>Payment Method</th>
+												<td style="width: 80%;">${order.paymentMethod}</td>
+											</tr>
+											<tr>
 												<th>Picture Copies</th>
 												<td style="width: 80%;">${order.pictureCopies}</td>
 											</tr>
@@ -178,29 +191,55 @@
 												<td style="width: 80%;"><fmt:formatNumber
 														value="${order.total}" type="currency" currencySymbol="$" /></td>
 											</tr>
+										</thead>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h2 class="m-0 font-weight-bold text-primary" align="center">Recipient
+								Information</h2>
+							<br />
+							<div class="card-body"
+								style="margin-left: 200px; margin-right: 200px">
+								<div class="table-responsive">
+									<table class="table table-bordered" width="100%"
+										cellspacing="0">
+										<thead align="center">
 											<tr>
-												<th>Recipient Name</th>
-												<td style="width: 80%;">${order.recipientName}</td>
+												<th>First Name</th>
+												<td style="width: 80%;">${order.firstname}</td>
 											</tr>
 											<tr>
-												<th>Recipient Phone</th>
-												<td style="width: 80%;">${order.recipientPhone}</td>
+												<th>Last Name</th>
+												<td style="width: 80%;">${order.lastname}</td>
 											</tr>
 											<tr>
-												<th>Ship To</th>
-												<td style="width: 80%;">${order.shippingAddress}</td>
+												<th>Phone</th>
+												<td style="width: 80%;">${order.phone}</td>
 											</tr>
 											<tr>
-												<th>Payment Method</th>
-												<td style="width: 80%;">${order.paymentMethod}</td>
+												<th>Address Line 1</th>
+												<td style="width: 80%;">${order.addressLine1}</td>
 											</tr>
 											<tr>
-												<th>Order Status</th>
-												<td style="width: 80%;">${order.status}</td>
+												<th>Address Line 2</th>
+												<td style="width: 80%;">${order.addressLine2}</td>
 											</tr>
 											<tr>
-												<th>Order Date</th>
-												<td style="width: 80%;">${order.orderDate}</td>
+												<th>City</th>
+												<td style="width: 80%;">${order.city}</td>
+											</tr>
+											<tr>
+												<th>State</th>
+												<td style="width: 80%;">${order.state}</td>
+											</tr>
+											<tr>
+												<th>Country</th>
+												<td style="width: 80%;">${order.countryName}</td>
 											</tr>
 										</thead>
 									</table>
@@ -248,6 +287,24 @@
 															currencySymbol="$" /></td>
 												</tr>
 											</c:forEach>
+											<tr align="center">
+												<th style="vertical-align: middle;" colspan="5"
+													align="right">SUB TOTAL</th>
+												<td style="vertical-align: middle;"><fmt:formatNumber
+														value="${order.subtotal}" type="currency" currencySymbol="$" /></td>
+											</tr>
+											<tr align="center">
+												<th style="vertical-align: middle;" colspan="5"
+													align="right">TAX</th>
+												<td style="vertical-align: middle;"><fmt:formatNumber
+														value="${order.tax}" type="currency" currencySymbol="$" /></td>
+											</tr>
+											<tr align="center">
+												<th style="vertical-align: middle;" colspan="5"
+													align="right">SHIPPING FEE</th>
+												<td style="vertical-align: middle;"><fmt:formatNumber
+														value="${order.shippingFee}" type="currency" currencySymbol="$" /></td>
+											</tr>
 											<tr align="center">
 												<th style="vertical-align: middle;" colspan="4"
 													align="right">TOTAL</th>
@@ -304,7 +361,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<!-- /.container-fluid -->

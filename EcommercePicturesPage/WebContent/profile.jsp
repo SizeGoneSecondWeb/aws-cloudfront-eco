@@ -135,9 +135,16 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
+									<h6 class="mb-0">First Name</h6>
 								</div>
-								<div class="text-muted font-size-sm">${loggedCustomer.fullname}</div>
+								<div class="text-muted font-size-sm">${loggedCustomer.firstname}</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Last Name</h6>
+								</div>
+								<div class="text-muted font-size-sm">${loggedCustomer.lastname}</div>
 							</div>
 							<hr>
 							<div class="row">
@@ -156,9 +163,16 @@
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
+									<h6 class="mb-0">Address Line 1</h6>
 								</div>
-								<div class="text-muted font-size-sm">${loggedCustomer.address}</div>
+								<div class="text-muted font-size-sm">${loggedCustomer.addressLine1}</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Address Line 2</h6>
+								</div>
+								<div class="text-muted font-size-sm">${loggedCustomer.addressLine2}</div>
 							</div>
 							<hr>
 							<div class="row">
@@ -166,6 +180,13 @@
 									<h6 class="mb-0">City</h6>
 								</div>
 								<div class="text-muted font-size-sm">${loggedCustomer.city}</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">State</h6>
+								</div>
+								<div class="text-muted font-size-sm">${loggedCustomer.state}</div>
 							</div>
 							<hr>
 							<div class="row">

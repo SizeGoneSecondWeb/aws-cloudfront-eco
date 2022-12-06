@@ -49,9 +49,17 @@
 							</div>
 							<form action="register_customer" method="post" class="user"
 								id="CustomerForm">
-								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="fullName" name="fullName" placeholder="Full Name" required>
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0"">
+										<input type="text" class="form-control form-control-user"
+											id="firstName" name="firstName" placeholder="First Name"
+											required>
+									</div>
+									<div class="col-sm-6 mb-3 mb-sm-0"">
+										<input type="text" class="form-control form-control-user"
+											id="lastName" name="lastName" placeholder="Last Name"
+											required>
+									</div>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
@@ -63,17 +71,27 @@
 								</div>
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
-										id="address" name="address" placeholder="Address" required>
+										id="address1" name="address1" placeholder="Address Line 1"
+										required>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="address2" name="address2" placeholder="Address Line 2"
+										required>
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user"
 											id="city" name="city" placeholder="City" required>
 									</div>
-									<div class="col-sm-6">
+									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user"
-											id="country" name="country" placeholder="Country" required>
+											id="state" name="state" placeholder="State" required>
 									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="country" name="country" placeholder="Country" required>
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">

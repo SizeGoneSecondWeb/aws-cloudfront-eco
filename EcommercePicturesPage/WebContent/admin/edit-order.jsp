@@ -1,4 +1,5 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -71,7 +72,8 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/"> <i
+			<li class="nav-item"><a class="nav-link"
+				href="${pageContext.request.contextPath}/admin/"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 
 			<!-- Divider -->
@@ -153,6 +155,9 @@
 						<!-- DataTales Overview -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
+								<h2 class="m-0 font-weight-bold text-primary" align="center">Order
+									Overview</h2>
+								<br />
 								<div class="card-body"
 									style="margin-left: 200px; margin-right: 200px">
 									<div class="table-responsive">
@@ -168,37 +173,20 @@
 													<td style="width: 80%;">${order.orderDate}</td>
 												</tr>
 												<tr>
-													<th>Recipient Name</th>
-													<td style="width: 80%;"><input type="text"
-														name="recipientName" class="form-control"
-														value="${order.recipientName}" required></td>
-												</tr>
-												<tr>
-													<th>Recipient Phone</th>
-													<td style="width: 80%;"><input type="text"
-														name="recipientPhone" class="form-control"
-														value="${order.recipientPhone}" required></td>
-												</tr>
-												<tr>
-													<th>Ship To</th>
-													<td style="width: 80%;"><input type="text"
-														name="shippingAddress" class="form-control"
-														value="${order.shippingAddress}" required></td>
-												</tr>
-												<tr>
 													<th>Payment Method</th>
 													<td style="width: 80%;"><select name="paymentMethod"
 														class="form-control" required>
-															<option value="${order.paymentMethod}" selected="selected">${order.paymentMethod}</option>
+															<option value="${order.paymentMethod}"
+																selected="selected">${order.paymentMethod}</option>
 															<option value="Cash On Delivery">Cash On
 																Delivery</option>
-															<!-- <option value="Paypal">Paypal</option> -->
+															<option value="Paypal">Paypal</option>
 													</select></td>
 												</tr>
 												<tr>
 													<th>Order Status</th>
 													<td style="width: 80%;"><select name="orderStatus"
-														class="form-control" required >
+														class="form-control" required>
 															<option value="${order.status}" selected="selected">${order.status}</option>
 															<option value="Processing">Processing</option>
 															<option value="Shipping">Shipping</option>
@@ -213,7 +201,72 @@
 								</div>
 							</div>
 						</div>
-
+						<!-- DataTales Overview -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h2 class="m-0 font-weight-bold text-primary" align="center">Recipient
+									Information</h2>
+								<br />
+								<div class="card-body"
+									style="margin-left: 200px; margin-right: 200px">
+									<div class="table-responsive">
+										<table class="table table-bordered" width="100%"
+											cellspacing="0">
+											<thead>
+												<tr>
+													<th>First Name</th>
+													<td style="width: 80%;"><input type="text"
+														name="firstName" id="firstName" class="form-control"
+														value="${order.firstname}" required></td>
+												</tr>
+												<tr>
+													<th>Last Name</th>
+													<td style="width: 80%;"><input type="text"
+														name="lastName" id="lastName" class="form-control"
+														value="${order.lastname}" required></td>
+												</tr>
+												<tr>
+													<th>Recipient Phone</th>
+													<td style="width: 80%;"><input type="text"
+														name="phone" id="phone" class="form-control"
+														value="${order.phone}" required></td>
+												</tr>
+												<tr>
+													<th>Address Line 1</th>
+													<td style="width: 80%;"><input type="text"
+														name="address1" id="address1" class="form-control"
+														value="${order.addressLine1}" required></td>
+												</tr>
+												<tr>
+													<th>Address Line 2</th>
+													<td style="width: 80%;"><input type="text"
+														name="address2" id="address2" class="form-control"
+														value="${order.addressLine2}" required></td>
+												</tr>
+												<tr>
+													<th>City</th>
+													<td style="width: 80%;"><input type="text" name="city"
+														id="city" class="form-control" value="${order.city}"
+														required></td>
+												</tr>
+												<tr>
+													<th>State</th>
+													<td style="width: 80%;"><input type="text"
+														name="state" id="state" class="form-control"
+														value="${order.state}" required></td>
+												</tr>
+												<tr>
+													<th>Country</th>
+													<td style="width: 80%;"><input type="text"
+														name="country" id="country" class="form-control"
+														value="${order.country}" required></td>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
@@ -252,14 +305,15 @@
 														<td style="vertical-align: middle;">${status.index + 1}</td>
 														<td style="vertical-align: middle;">${orderDetail.picture.title}</td>
 														<td style="vertical-align: middle;">${orderDetail.picture.author}</td>
-														<td style="vertical-align: middle;">
-															<input type="hidden" name="price" value="${orderDetail.picture.price}">
-															<fmt:formatNumber
+														<td style="vertical-align: middle;"><input
+															type="hidden" name="price"
+															value="${orderDetail.picture.price}"> <fmt:formatNumber
 																value="${orderDetail.picture.price}" type="currency"
 																currencySymbol="$" /></td>
-														<td style="vertical-align: middle; width: 100px">
-															<input type="hidden" name="pictureId" value="${orderDetail.picture.pictureId}">
-															<input type="text" name="quantity${status.index + 1}"
+														<td style="vertical-align: middle; width: 100px"><input
+															type="hidden" name="pictureId"
+															value="${orderDetail.picture.pictureId}"> <input
+															type="text" name="quantity${status.index + 1}"
 															class="form-control text-center"
 															value="${orderDetail.quantity}" required></td>
 														<td style="vertical-align: middle;"><fmt:formatNumber
@@ -274,6 +328,26 @@
 													</tr>
 												</c:forEach>
 												<tr align="center">
+													<th style="vertical-align: middle;" colspan="5"
+														align="right">SUB TOTAL</th>
+													<td style="vertical-align: middle;"><fmt:formatNumber
+															value="${order.subtotal}" type="currency" currencySymbol="$" /></td>
+												</tr>
+												<tr align="center">
+													<th style="vertical-align: middle;" colspan="5"
+														align="right">TAX</th> 
+													<td style="vertical-align: middle;"><input type="text" required
+													class="form-control text-center"
+														name="tax" id="tax" value="${order.tax}"/></td>
+												</tr>
+												<tr align="center">
+													<th style="vertical-align: middle;" colspan="5"
+														align="right">SHIPPING FEE</th>
+													<td style="vertical-align: middle;"><input type="text" required
+													class="form-control text-center"
+														name="shippingFee" id="shippingFee" value="${order.shippingFee}"/></td>
+												</tr>
+												<tr align="center">
 													<th style="vertical-align: middle;" colspan="4"
 														align="right">TOTAL</th>
 													<td style="vertical-align: middle;">${order.pictureCopies}</td>
@@ -284,12 +358,13 @@
 											</tbody>
 										</table>
 										<div align="center">
-											<button type="submit" class="btn btn-success"><i
-												class="material-icons">&#xE147;</i> <span>Save</span> </button>
-											&nbsp;&nbsp;&nbsp;&nbsp; 
-											<a onClick="javascript:window.location.href='list_order';"
-												class="btn btn-danger"> <i
-												class="material-icons">&#xE151;</i> <span>Cancel</span>
+											<button type="submit" class="btn btn-success">
+												<i class="material-icons">&#xE147;</i> <span>Save</span>
+											</button>
+											&nbsp;&nbsp;&nbsp;&nbsp; <a
+												onClick="javascript:window.location.href='list_order';"
+												class="btn btn-danger"> <i class="material-icons">&#xE151;</i>
+												<span>Cancel</span>
 											</a>
 										</div>
 									</div>
