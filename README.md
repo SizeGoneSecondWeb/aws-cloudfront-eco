@@ -37,26 +37,42 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
+Trang thương mại điện tử là phần không thể thiếu trong xã hội hiện đại ngày nay, nó xuất hiện hầu như ở khắp mọi nơi và con người ai ai cũng có nhu cầu sử dụng chúng. Chính vì thế nhóm chúng em đã chọn xây dựng một website bán tranh để có thể hiểu rõ cách xây dựng, phát triển và quảng bá một trang web. Sau 15 tuần dày công nghiên cứu và thực hành, chúng em đã hoàn thiện được những phần thiết yếu nhất của một trang thương mại điện tử - Website bán tranh. 
 ### Prerequisites
-
-
+Trước khi cài đặt và chỉnh sửa web app, hãy chắc rằng trên máy đã cài đặt:
+* Công cụ hỗ trợ lập trình: Eclipse (khuyên dùng), hoặc bất kì công cụ khác có tích hợp môi trường phát triển Java (IDE) khác.
+* Phần mềm web server: Apache Tomcat (phiên bản 8.5 trở lên).
+* Hệ quản trị cơ sở dữ liệu: MySQL (khuyên dùng).
 ### Installation
-
+Khi đã chuẩn bị những điều kiện tiên quyết ở trên, bất kì ai cũng có thể Run web app. Chúng em cung cấp file war trong thư mục EcommercePicturesPage (https://github.com/SizeGoneSecondWeb/aws-cloudfront-eco/blob/293bc0ceebabd1579e4d9543a249db56749e81b6/EcommercePicturesPage/EcommercePicturesPage.war) để có thể dễ dàng import project vào các công cụ hỗ trợ. Sau khi import, dev có thể chạy ngay web app bằng server Tomcat như đã cài đặt (project đang sử dụng database từ dịch vụ của AWS Amazon RDS).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+Dev có thể chỉnh sửa cơ sở dữ liệu bằng cách import database có sẵn chúng em trong thư mục Database bằng phần mềm MySQL, sau đó truy cập vào file persistence trong thư mục ./EcommercePicturesPage/src/META-INF. Trong thẻ properties đã có sẵn phần đang bị comment ![image](https://user-images.githubusercontent.com/112426628/205655581-8ca21e8a-662e-41ec-9f6e-57b8f565ab6e.png)
+Dev có thể uncomment dòng 10-13, chỉnh sửa lại đường dẫn đến localhost và user/password MySQL trên máy và comment lại phần từ dòng 14-17.
+Đây là một số mô hình kiến trúc và diagram của ứng dụng:
+
+_Kiến trúc ứng dụng:_
+![image](https://user-images.githubusercontent.com/112426628/205657821-4d5a19b5-454d-4d28-9cea-045066dab9eb.png)
+
+_User manager class diagram:_
+![image](https://user-images.githubusercontent.com/112426628/205657894-860861b5-6da5-4768-b206-372eb960df22.png)
+
+_MVC sample diagram:_
+![image](https://user-images.githubusercontent.com/112426628/205657953-a15b3b12-8328-4e8a-85ac-de7a5bca8df9.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
 ## Contact
-
-Our Leader - [@leader_facebook](https://www.facebook.com/quanglam0913)
+Nếu bạn cần sự hỗ trợ kỹ thuật nào, hãy liên hệ thành viên của đội chúng tôi ở bên dưới!
+### Our Leader - [@QuangLam](https://www.facebook.com/quanglam0913)
+### Web Developer - [@BaoLong](https://www.facebook.com/maibaolongne)
+### Cloud Engineer - [@QuocViet](https://www.facebook.com/quocviet6028)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
